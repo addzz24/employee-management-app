@@ -19,6 +19,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'add-employee',
+        loadComponent: () =>
+          import('../app/features/add-employee/add-employee.component').then(
+            (m) => m.AddEmployeeComponent,
+          ),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',
