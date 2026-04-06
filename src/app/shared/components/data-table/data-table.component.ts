@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { TableAction, TableActionEvent } from '../../../core/types/types';
 import { TitleCaseSplitPipe } from "../../../core/pipes/title-case-split.pipe";
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-data-table',
@@ -40,7 +41,8 @@ import { TitleCaseSplitPipe } from "../../../core/pipes/title-case-split.pipe";
     FormsModule,
     MatIconModule,
     MatTooltipModule,
-    TitleCaseSplitPipe
+    TitleCaseSplitPipe,
+    MatChipsModule
 ],
   templateUrl: './data-table.component.html',
 })

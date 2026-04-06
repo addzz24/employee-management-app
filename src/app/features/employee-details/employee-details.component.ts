@@ -7,10 +7,11 @@ import {
 } from '../../shared/constants/constants';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltip } from "@angular/material/tooltip";
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-employee-list',
-  imports: [DataTableComponent, MatIconModule, MatTooltip],
+  imports: [DataTableComponent, MatIconModule, MatTooltip, MatChipsModule],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
 })

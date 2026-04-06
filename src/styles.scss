@@ -3,7 +3,7 @@
 
 @use '../src/app/styles/variables' as *;
 @use '../src/app/styles/base/fonts' as *;
-@use '../src/app/styles/base/material-overrides';
+@use '../src/app/styles/base/material-overrides' as *;
 
 html {
   @include mat.theme((
