@@ -16,6 +16,9 @@
 
     .nav-item {
       cursor: pointer;
+      &:hover {
+        color: $primary !important;
+      }
     }
   }
 }

@@ -1,0 +1,172 @@
+import { Employee } from "../../core/types/types";
+
+export const EMPLOYEE_DISPLAYED_COLUMNS: string[] = [
+  'name',
+  'position',
+  'designation',
+  'dob',
+  'joiningDate',
+  'experience',
+  'employmentType',
+  'status',
+  'currency',
+  'actions'
+];
+
+export const EMPLOYEE_TABLE_ACTIONS = [
+  { label: 'Edit', icon: 'edit', tooltip: 'Edit Employee' },
+  { label: 'Delete', icon: 'delete', tooltip: 'Delete Employee' }
+];
+
+export const DEFAULT_EMPLOYEES: Employee[] = [
+  {
+    id: 1,
+    name: 'John Doe',
+    position: 'Software Engineer',
+    designation: 'Frontend Developer',
+    dob: '1990-01-01',
+    address: [
+      {
+        type: 'Home',
+        line1: '123 Main St',
+        line2: 'Apt 4B',
+        city: 'New York',
+        pincode: 10001,
+        state: 'NY'
+      }
+    ],
+    education: 'B.Sc. Computer Science',
+    joiningDate: '2020-06-15',
+    experience: 5,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 80000,
+    bonus: 5000,
+    currency: 'USD'
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    position: 'Project Manager',
+    designation: 'Senior Project Manager',
+    dob: '1985-05-20',
+    address: [
+      {
+        type: 'Home',
+        line1: '456 Elm St',
+        line2: '',
+        city: 'Los Angeles',
+        pincode: 90001,
+        state: 'CA'
+      }
+    ],
+    education: 'MBA',
+    joiningDate: '2018-03-10',
+    experience: 10,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 120000,
+    bonus: 10000,
+    currency: 'USD'
+  },
+  {
+    id: 3,
+    name: 'Alice Johnson',
+    position: 'UX Designer',
+    designation: 'Lead UX Designer',
+    dob: '1992-09-15',
+    address: [
+      {
+        type: 'Home',
+        line1: '789 Oak St',
+        line2: 'Suite 5C',
+        city: 'Chicago',
+        pincode: 60601,
+        state: 'IL'
+      }
+    ],
+    education: 'B.Des. UX Design',
+    joiningDate: '2019-11-01',
+    experience: 7,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 90000,
+    bonus: 7000,
+    currency: 'USD'
+  },
+  {
+    id: 4,
+    name: 'Bob Williams',
+    position: 'Data Analyst',
+    designation: 'Junior Data Analyst',
+    dob: '1995-12-10',
+    address: [
+      {
+        type: 'Home',
+        line1: '321 Pine St',
+        line2: '',
+        city: 'San Francisco',
+        pincode: 94101,
+        state: 'CA'
+      }
+    ],
+    education: 'B.Sc. Data Science',
+    joiningDate: '2021-01-20',
+    experience: 2,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 70000,
+    bonus: 3000,
+    currency: 'USD'
+  },
+  {
+    id: 5,
+    name: 'Emily Davis',
+    position: 'HR Manager',
+    designation: 'HR Manager',
+    dob: '1988-07-30',
+    address: [
+      {
+        type: 'Home',
+        line1: '654 Cedar St',
+        line2: 'Apt 2A',
+        city: 'Seattle',
+        pincode: 98101,
+        state: 'WA'
+      }
+    ],
+    education: 'B.A. Human Resources',
+    joiningDate: '2017-05-15',
+    experience: 8,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 85000,
+    bonus: 6000,
+    currency: 'USD'
+  },
+  {
+    id: 6,
+    name: 'Michael Brown',
+    position: 'DevOps Engineer',
+    designation: 'Senior DevOps Engineer',
+    dob: '1987-03-25',
+    address: [
+      {
+        type: 'Home',
+        line1: '987 Maple St',
+        line2: '',
+        city: 'Austin',
+        pincode: 73301,
+        state: 'TX'
+      }
+    ],
+    education: 'B.Sc. Computer Engineering',
+    joiningDate: '2016-09-01',
+    experience: 9,
+    employmentType: 'Full-time',
+    status: 'Active',
+    salary: 95000,
+    bonus: 8000,
+    currency: 'USD'
+  }
+];

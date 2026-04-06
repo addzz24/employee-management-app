@@ -1,0 +1,28 @@
+<div class="employee-details-container">
+  <div class="heading">
+    <h1>Employees</h1>
+    <p>Manage your team members, update details and view employment status.</p>
+  </div>
+
+  <div class="custom-toggle">
+    <input type="checkbox" id="viewToggle" (change)="onToggle()"/>
+    <label for="viewToggle">
+      <span class="icons">
+        <mat-icon class="icon left" matTooltip="Table View">table_rows</mat-icon>
+        <mat-icon class="icon right" matTooltip="Card View">grid_view</mat-icon>
+      </span>
+    </label>
+  </div>
+</div>
+
+@if (isTableView()) {
+  <app-data-table
+    [data]="employees"
+    [visibleColumns]="displayedColumns"
+    (tableAction)="handleTableAction($event)"
+    [tableActions]="tableActions"
+    [enablePagination]="enablePagination"
+  ></app-data-table>
+} @else {
+  <p>Card view coming soon...</p>
+}

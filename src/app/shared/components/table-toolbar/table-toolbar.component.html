@@ -1,0 +1,50 @@
+<div class="toolbar">
+
+  <!-- LEFT SIDE -->
+  <div class="left">
+
+    <!-- Search -->
+    @if (showSearch()) {
+      <mat-form-field appearance="outline" class="search">
+        <input
+          matInput
+          placeholder="Search employees by name..."
+          [(ngModel)]="searchValue"
+          (input)="onSearchChange(searchValue)"
+        />
+      </mat-form-field>
+    }
+
+    <!-- Filters -->
+    @if (showFilters()) {
+      @for (filter of filters(); track filter.key) {
+        <mat-form-field appearance="outline" class="filter">
+          <mat-select
+            [placeholder]="filter.label"
+            (selectionChange)="onFilterChange(filter.key, $event.value)"
+          >
+            <mat-option value="">All</mat-option>
+            @for (option of filter.options; track option) {
+              <mat-option [value]="option">{{ option }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      }
+    }
+
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="right">
+
+    @if (showToggle()) {
+      <mat-slide-toggle
+        [(ngModel)]="toggleValue"
+        (change)="onToggleChange(toggleValue)"
+      >
+      </mat-slide-toggle>
+    }
+
+  </div>
+
+</div>

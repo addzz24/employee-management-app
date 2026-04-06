@@ -14,8 +14,8 @@ export const routes: Routes = [
       {
         path: 'employee-list',
         loadComponent: () =>
-          import('../app/features/employee-list/employee-list.component').then(
-            (m) => m.EmployeeListComponent,
+          import('../app/features/employee-details/employee-details.component').then(
+            (m) => m.EmployeeDetailsComponent,
           ),
       },
       {
