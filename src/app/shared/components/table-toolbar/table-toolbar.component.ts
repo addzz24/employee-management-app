@@ -1,5 +1,5 @@
 import { Component, input, output, signal, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,6 @@ import { Subject, debounceTime } from 'rxjs';
   selector: 'app-table-toolbar',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     MatMenuModule,
     MatSelectModule,
@@ -22,8 +21,8 @@ import { Subject, debounceTime } from 'rxjs';
     MatIconModule,
     MatTooltipModule,
     MatInputModule,
-    FormsModule,
-  ],
+    FormsModule
+],
   templateUrl: './table-toolbar.component.html',
   styleUrl: './table-toolbar.component.scss',
 })

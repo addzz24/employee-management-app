@@ -6,7 +6,7 @@ import {
   output,
 } from '@angular/core';
 
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -21,15 +21,14 @@ import { TitleCaseSplitPipe } from '../../../core/pipes/title-case-split.pipe';
   selector: 'app-data-table',
   standalone: true,
   imports: [
-    CommonModule,
     MatTableModule,
     MatSortModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    TitleCaseSplitPipe,
-  ],
+    TitleCaseSplitPipe
+],
   templateUrl: './data-table.component.html',
 })
 export class DataTableComponent implements AfterViewInit {
