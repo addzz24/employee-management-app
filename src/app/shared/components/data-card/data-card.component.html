@@ -1,0 +1,38 @@
+<div class="card" [class.flipped]="isFlipped()">
+  <!-- FRONT -->
+  <div class="card-face front">
+    <div class="employee-info">
+      <h3>{{ employee().name }}</h3>
+      <p>{{ employee().designation }}</p>
+      <p>{{ employee().department }}</p>
+    </div>
+    <div class="actions">
+      <button matIconButton (click)="toggleFlip()" matTooltip="More Info">
+        <mat-icon class="info-icon">info</mat-icon>
+      </button>
+
+      <button matIconButton (click)="onDelete()" matTooltip="Delete Employee">
+        <mat-icon class="delete-icon">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <div class="card-face back">
+    <div class="employee-info">
+      <p><strong>DOB:</strong> {{ employee().dob }}</p>
+      <p><strong>Joining:</strong> {{ employee().joiningDate }}</p>
+      <p><strong>Status:</strong> {{ employee().status }}</p>
+    </div>
+
+    <div class="actions">
+      <button matIconButton (click)="toggleFlip()" matTooltip="Back">
+        <mat-icon class="arrow-icon">arrow_back</mat-icon>
+      </button>
+
+      <button matIconButton (click)="onDelete()" matTooltip="Delete Employee">
+        <mat-icon class="delete-icon">delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

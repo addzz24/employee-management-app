@@ -13,6 +13,7 @@ import { TableToolbarComponent } from '../../shared/components/table-toolbar/tab
 import { Employee, TableFilterConfig } from '../../core/types/types';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { DataCardComponent } from '../../shared/components/data-card/data-card.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -23,6 +24,7 @@ import { MatTableDataSource } from '@angular/material/table';
     MatTooltip,
     MatChipsModule,
     TableToolbarComponent,
+    DataCardComponent,
   ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
@@ -134,5 +136,20 @@ export class EmployeeDetailsComponent implements OnInit {
 
     this.startIndex.set(start);
     this.endIndex.set(end);
+  }
+
+  get paginatedEmployees(): Employee[] {
+    if (!this.paginator) return this.dataSource.data;
+
+    const start = this.paginator.pageIndex * this.paginator.pageSize;
+    const end = start + this.paginator.pageSize;
+
+    return this.dataSource.data.slice(start, end);
+  }
+
+  handleDelete(employeeId: number) {
+    const updatedEmployees = this.originalEmployees().filter(emp => emp.id !== employeeId);
+    this.originalEmployees.set(updatedEmployees);
+    this.dataSource.data = updatedEmployees;
   }
 }

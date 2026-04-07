@@ -15,26 +15,32 @@
   </div>
 </div>
 
-<!-- Filters and actions toolbar -->
-<app-table-toolbar
-  [filtersConfig]="filtersConfig()"
-  (apply)="onApplyFilters($event)"
-  (reset)="onResetFilters()"
-  (searchChange)="onSearch($event)"
-></app-table-toolbar>
+<div class="employee-data-container">
+  <!-- Filters and actions toolbar -->
+  <app-table-toolbar
+    [filtersConfig]="filtersConfig()"
+    (apply)="onApplyFilters($event)"
+    (reset)="onResetFilters()"
+    (searchChange)="onSearch($event)"
+  ></app-table-toolbar>
 
-<!-- Employee data table or card view -->
-@if (isTableView()) {
-  <app-data-table
-    [dataSource]="dataSource"
-    [visibleColumns]="displayedColumns"
-    (tableAction)="handleTableAction($event)"
-    [tableActions]="tableActions"
-  ></app-data-table>
-} @else {
-  <p>Card view coming soon...</p>
-}
+  <!-- Employee data table or card view -->
+  @if (isTableView()) {
+    <app-data-table
+      [dataSource]="dataSource"
+      [visibleColumns]="displayedColumns"
+      (tableAction)="handleTableAction($event)"
+      [tableActions]="tableActions"
+    ></app-data-table>
+  } @else {
+    <div class="card-list">
+      @for (emp of paginatedEmployees; track emp.id) {
+        <app-data-card class="card-list-item" [employee]="emp" (delete)="handleDelete($event)"></app-data-card>
+      }
+    </div>
+  }
 
-<!-- Pagination controls -->
-<mat-paginator [length]="employees().length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-</mat-paginator>
+  <!-- Pagination controls -->
+  <mat-paginator [length]="employees().length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

@@ -2,11 +2,15 @@
 
 .btn {
   font-size: 1rem;
-  color: $text-white;
+  color: #ffffff;
   background-color: $primary;
-  border-radius: $radius;
-  border: 1px solid $border-color;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
 }
 
 .toolbar-container {
@@ -59,7 +63,7 @@
   margin-top: 8px;
   align-items: center;
 
-  .btn{
+  .btn {
     width: 5rem;
     height: 2rem;
   }

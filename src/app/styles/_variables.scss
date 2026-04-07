@@ -1,29 +1,43 @@
 // 🎨 Primary Theme (Based on UI)
-$primary: #3b5ed7;          // Button / active highlight
-$primary-light: #e8edff;    // Active tab background
+$primary: #3b5ed7;
+$primary-light: #e8edff;
 
-// 🧱 Backgrounds
 $bg-main: #f6faff;
 $bg-card: #ffffff;
 $bg-header: #e5eef8;
 $bg-hover: #e7eaed;
 
-// 🔤 Text
-$text-primary: #1f2937;     // Dark heading
-$text-secondary: #6b7280;   // Subtext
+$text-primary: #1f2937;
+$text-secondary: #6b7280;
 $text-muted: #9ca3af;
 $text-white: #ffffff;
 
-// 🔲 Borders
+$text-danger-100: #fb9b9b;
+$text-danger-200: #f87171;
+$text-danger-300: #ef4444;
+$text-danger-400: #dc2626;
+$text-danger-500: #b91c1c;
+
+$text-success-100: #6ee7b7;
+$text-success-200: #34d399;
+$text-success-300: #10b981;
+$text-success-400: #059669;
+$text-success-500: #047857;
+
+$text-warning-100: #fcd34d;
+$text-warning-200: #fbbf24;
+$text-warning-300: #f59e0b;
+$text-warning-400: #d97706;
+
+
+
 $border-color: #e5e7eb;
 
-// 🟢 Status Colors (IMPORTANT for assignment)
-$success: #10b981;  // Active
-$error: #ef4444;    // Inactive
+$success: #10b981;
+$error: #ef4444;
 $warning: #f59e0b;
 
-// 📏 Radius (Used everywhere in your UI)
+
 $radius: 10px;
 
-// 🪟 Shadow (Soft card shadow)
 $shadow-card: 0 2px 8px rgba(0, 0, 0, 0.05);

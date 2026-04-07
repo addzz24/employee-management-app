@@ -1,0 +1,82 @@
+@use '../../../styles/variables' as *;
+
+.card {
+  perspective: 1000px;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  padding: 16px;
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .employee-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+  }
+
+  .arrow-icon {
+    color: $text-primary !important;
+  }
+
+  .info-icon {
+    color: $text-success-200 !important;
+  }
+
+  .delete-icon {
+    color: $text-danger-200 !important;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: $primary;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: $text-primary;
+  }
+
+  button {
+    margin-top: auto;
+    width: fit-content;
+  }
+}
+
+.front {
+  transform: rotateY(0);
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(360deg);
+}
