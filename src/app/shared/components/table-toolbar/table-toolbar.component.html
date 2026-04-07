@@ -5,9 +5,9 @@
         class="search-input"
         type="email"
         matInput
-        [value]="searchTerm()"
-        (keyup)="onSearch()"
-        placeholder="search"
+        [ngModel]="searchTerm()"
+        (ngModelChange)="onSearch($event)"
+        placeholder="search by name"
       />
     </mat-form-field>
   </div>
@@ -16,6 +16,7 @@
     <button
       mat-button="filled"
       [matMenuTriggerFor]="filterMenu"
+      #menuTrigger="matMenuTrigger"
       matTooltip="Apply Filters"
       matTooltipPosition="below"
       class="btn"
@@ -36,15 +37,17 @@
 </div>
 
 <mat-menu #filterMenu="matMenu" class="filter-menu">
-
   <div class="filter-panel" (click)="$event.stopPropagation()">
-
     @for (filter of filtersConfig(); track filter.key) {
       <div class="filter-item">
         <label class="filter-label">{{ filter.label }}</label>
         @switch (filter.type) {
           @case ('select') {
-            <mat-form-field subscriptSizing="dynamic" appearance="outline" class="custom-select-height ">
+            <mat-form-field
+              subscriptSizing="dynamic"
+              appearance="outline"
+              class="custom-select-height"
+            >
               <mat-select [(ngModel)]="filters[filter.key]">
                 @for (option of filter.options; track option) {
                   <mat-option [value]="option">{{ option }}</mat-option>
@@ -58,14 +61,9 @@
 
     <!-- ACTIONS -->
     <div class="filter-actions">
-      <button mat-button class="btn" (click)="resetFilters()">
-        Clear
-      </button>
+      <button mat-button class="btn" (click)="resetFilters()">Clear</button>
 
-      <button mat-raised-button class="btn" (click)="applyFilters()">
-        Apply
-      </button>
+      <button mat-raised-button class="btn" (click)="applyFilters()">Apply</button>
     </div>
-
   </div>
 </mat-menu>

@@ -10,7 +10,7 @@ export type Address = {
 export type Employee = {
   id: number;
   name: string;
-  position: string;
+  department: string;
   designation: string;
   dob: string;
   address: Address[];

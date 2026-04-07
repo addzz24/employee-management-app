@@ -28,6 +28,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrl: './employee-details.component.scss',
 })
 export class EmployeeDetailsComponent implements OnInit {
+  originalEmployees = signal<Employee[]>(DEFAULT_EMPLOYEES);
   employees = signal<Employee[]>(DEFAULT_EMPLOYEES);
   displayedColumns = EMPLOYEE_DISPLAYED_COLUMNS;
   tableActions = EMPLOYEE_TABLE_ACTIONS;
@@ -65,39 +66,10 @@ export class EmployeeDetailsComponent implements OnInit {
       this.dataSource.data = this.employees();
     });
   }
+
   ngOnInit(): void {
     this.isTableView.set(true);
     this.dataSource.data = this.employees();
-    setTimeout(() => {
-      this.employees.update((employees) => [
-        ...employees,
-        {
-          id: 1,
-          name: 'John Smith',
-          position: 'Software Engineer',
-          designation: 'Backend Developer',
-          dob: '1999-01-01',
-          address: [
-            {
-              type: 'Home',
-              line1: '123 Main St',
-              line2: 'Apt 4B',
-              city: 'New York',
-              pincode: 10001,
-              state: 'NY',
-            },
-          ],
-          education: 'B.Sc. Computer Science',
-          joiningDate: '2023-06-15',
-          experience: 5,
-          employmentType: 'Full-time',
-          status: 'Inactive',
-          salary: 2000,
-          bonus: 1000,
-          currency: 'USD',
-        },
-      ]);
-    }, 2000);
   }
 
   ngAfterViewInit() {
@@ -123,20 +95,32 @@ export class EmployeeDetailsComponent implements OnInit {
       });
     }
   }
+  onSearch(term: string) {
+    const search = term.toLowerCase();
+    const filtered = this.originalEmployees().filter((emp) =>
+      emp.name?.toLowerCase().includes(search),
+    );
 
-  onResetFilters() {
-    // Reset filters logic here
-    console.log('Filters reset');
+    this.dataSource.data = filtered;
+    this.paginator?.firstPage();
   }
 
   onApplyFilters(filters: any) {
-    // Apply filters logic here
     console.log('Applying filters:', filters);
+    const filtered = this.originalEmployees().filter((emp) => {
+      const matchesDepartment = !filters.department || emp.department === filters.department;
+      const matchesDesignation = !filters.designation || emp.designation === filters.designation;
+      const matchesStatus = !filters.status || emp.status === filters.status;
+
+      return matchesDepartment && matchesDesignation && matchesStatus;
+    });
+
+    this.dataSource.data = filtered;
+    this.paginator?.firstPage();
   }
 
-  onFiltersChange(filters: any) {
-    // Handle filter changes if needed
-    console.log('Filters changed:', filters);
+  onResetFilters() {
+    this.dataSource.data = this.originalEmployees();
   }
 
   updatePageInfo() {

@@ -2,7 +2,7 @@ import { Employee, TableFilterConfig } from '../../core/types/types';
 
 export const EMPLOYEE_DISPLAYED_COLUMNS: string[] = [
   'name',
-  'position',
+  'department',
   'designation',
   'dob',
   'joiningDate',
@@ -23,7 +23,7 @@ export const FILTER_CONFIGS : TableFilterConfig[] = [
     key: 'department',
     label: 'Department',
     type: 'select',
-    options: ['Engineering', 'HR', 'Sales', 'Marketing'],
+    options: ['Engineering', 'HR'],
   },
   {
     key: 'status',
@@ -35,7 +35,7 @@ export const FILTER_CONFIGS : TableFilterConfig[] = [
     key: 'designation',
     label: 'Designation',
     type: 'select',
-    options: ['Software Engineer', 'HR Manager', 'Sales Executive', 'Marketing Specialist'],
+    options: ['Frontend Developer', 'Senior Project Manager', 'Lead UX Designer', 'Junior Data Analyst', 'HR Manager', 'Senior DevOps Engineer', 'Junior HR Specialist'],
   },
 ];
 
@@ -43,7 +43,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
   {
     id: 1,
     name: 'John Doe',
-    position: 'Software Engineer',
+    department: 'Engineering',
     designation: 'Frontend Developer',
     dob: '1990-01-01',
     address: [
@@ -59,16 +59,16 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     education: 'B.Sc. Computer Science',
     joiningDate: '2020-06-15',
     experience: 5,
-    employmentType: 'Full-time',
+    employmentType: 'Contractor',
     status: 'Active',
     salary: 80000,
     bonus: 5000,
-    currency: 'USD',
+    currency: 'INR',
   },
   {
     id: 2,
     name: 'Jane Smith',
-    position: 'Project Manager',
+    department: 'Engineering',
     designation: 'Senior Project Manager',
     dob: '1985-05-20',
     address: [
@@ -93,7 +93,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
   {
     id: 3,
     name: 'Alice Johnson',
-    position: 'UX Designer',
+    department: 'Engineering',
     designation: 'Lead UX Designer',
     dob: '1992-09-15',
     address: [
@@ -110,7 +110,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     joiningDate: '2019-11-01',
     experience: 7,
     employmentType: 'Full-time',
-    status: 'Active',
+    status: 'Inactive',
     salary: 90000,
     bonus: 7000,
     currency: 'USD',
@@ -118,7 +118,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
   {
     id: 4,
     name: 'Bob Williams',
-    position: 'Data Analyst',
+    department: 'Engineering',
     designation: 'Junior Data Analyst',
     dob: '1995-12-10',
     address: [
@@ -134,8 +134,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     education: 'B.Sc. Data Science',
     joiningDate: '2021-01-20',
     experience: 2,
-    employmentType: 'Full-time',
-    status: 'Active',
+    employmentType: 'Contractor',
+    status: 'Inactive',
     salary: 70000,
     bonus: 3000,
     currency: 'USD',
@@ -143,7 +143,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
   {
     id: 5,
     name: 'Emily Davis',
-    position: 'HR Manager',
+    department: 'HR',
     designation: 'HR Manager',
     dob: '1988-07-30',
     address: [
@@ -163,13 +163,13 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 85000,
     bonus: 6000,
-    currency: 'USD',
+    currency: 'INR',
   },
   {
     id: 6,
     name: 'Michael Brown',
-    position: 'DevOps Engineer',
-    designation: 'Senior DevOps Engineer',
+    department: 'HR',
+    designation: 'Junior HR Specialist',
     dob: '1987-03-25',
     address: [
       {
@@ -181,13 +181,13 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         state: 'TX',
       },
     ],
-    education: 'B.Sc. Computer Engineering',
+    education: 'MBA Human Resources',
     joiningDate: '2016-09-01',
     experience: 9,
     employmentType: 'Full-time',
     status: 'Active',
     salary: 95000,
     bonus: 8000,
-    currency: 'USD',
+    currency: 'INR',
   },
 ];
