@@ -20,22 +20,6 @@
               </button>
             }
           }
-          @case ('status') {
-            <mat-chip
-              class="app-chip"
-              [ngClass]="{
-                'chip-success': row.status === 'Active',
-                'chip-danger': row.status === 'Inactive',
-              }"
-            >
-              {{ row.status }}
-            </mat-chip>
-          }
-          @case ('employmentType') {
-            <mat-chip class="app-chip chip-neutral">
-              {{ row.employmentType }}
-            </mat-chip>
-          }
           @default {
             {{ row[column] }}
           }
