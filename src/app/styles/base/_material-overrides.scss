@@ -10,7 +10,7 @@
 
 /* Mat Table */
 .mat-mdc-table {
-  background: $bg-card;
+  background: $bg-card !important;
   border-radius: $radius;
   overflow: hidden;
   border: 1px solid $border-color !important;
@@ -34,7 +34,7 @@
 
   .mat-icon {
     margin: 0;
-    color : $primary !important;
+    color: $primary !important;
   }
 }
 
@@ -43,10 +43,11 @@
   background: $primary-light !important;
 }
 
-.mat-mdc-paginator-outer-container{
+.mat-mdc-paginator-outer-container {
   border: 1px solid $border-color;
   border-radius: $radius;
   margin-top: 10px;
+  background-color: $bg-card !important;
 }
 
 .mat-mdc-header-cell {
@@ -59,7 +60,7 @@
 .mat-mdc-row {
   font-size: 12px !important;
   &:hover {
-    background:  $bg-hover;
+    background: $bg-hover;
   }
 }
 
@@ -94,4 +95,80 @@
 
 .mat-mdc-text-field-wrapper {
   border-radius: $radius !important;
+  border: 1px solid $border-color !important;
+}
+
+.search-wrapper {
+  .mat-mdc-form-field {
+    width: 220px;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    height: 40px !important;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px !important;
+  }
+
+  .mat-mdc-input-element {
+    font-size: 14px;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  /* Remove default underline/outline */
+  .mdc-line-ripple,
+  .mdc-notched-outline {
+    display: none !important;
+  }
+
+  /* Focus state */
+  .mat-mdc-text-field-wrapper.mat-focused {
+    border-color: $primary !important;
+    box-shadow: 0 0 0 2px rgba($primary, 0.2);
+  }
+}
+
+.mat-mdc-menu-panel{
+  max-width: 312px !important;
+}
+
+.custom-select-height {
+  --mat-form-field-container-height: 2.5rem;
+  --mat-form-field-container-vertical-padding: 0.5rem;
+
+  .mdc-notched-outline,
+  .mdc-line-ripple {
+    display: none !important;
+  }
+
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .mat-mdc-text-field-wrapper {
+    background: $bg-card !important;
+    border: 1px solid $border-color !important;
+    border-radius: $radius !important;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px !important;
+    height: 40px !important;
+  }
+
+
+  &.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+    .mat-mdc-floating-label {
+    transform: translateY(-1.1em) scale(0.75);
+  }
+
+  .mat-mdc-form-field-infix {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }

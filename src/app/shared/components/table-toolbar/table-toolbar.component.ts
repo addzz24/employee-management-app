@@ -1,49 +1,60 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { TableFilterConfig } from '../../../core/types/types';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Subject, debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-table-toolbar',
   standalone: true,
   imports: [
-    CommonModule,
-    MatInputModule,
+     CommonModule,
+    FormsModule,
+    MatMenuModule,
     MatSelectModule,
-    MatSlideToggleModule,
-    FormsModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatTooltipModule, MatInputModule, FormsModule,
   ],
   templateUrl: './table-toolbar.component.html',
   styleUrl: './table-toolbar.component.scss',
 })
 export class TableToolbarComponent {
 
-  // Inputs
-  showSearch = input(true);
-  showFilters = input(true);
-  showToggle = input(true);
+    filters: any = {};
+    filtersConfig = input<TableFilterConfig[]>([]);
+    searchTerm = signal('');
+    searchSub$ = new Subject();
 
-  filters = input<any[]>([]);
+    apply = output();
+    reset = output();
+    searchChange = output<string>();
 
-  // Outputs
-  searchChange = output<string>();
-  filterChange = output<any>();
-  toggleChange = output<boolean>();
+    applyFilters() {
+      this.apply.emit(this.filters);
+    }
 
-  searchValue = '';
-  toggleValue = false;
+    resetFilters() {
+      this.filters = {};
+      this.reset.emit();
+    }
 
-  onSearchChange(value: string) {
-    this.searchChange.emit(value);
+
+  constructor(){
+    this.searchSub$.pipe(
+      debounceTime(400)
+    ).subscribe((value:any)=>{
+       this.searchChange.emit(value);
+    })
   }
 
-  onFilterChange(key: string, value: any) {
-    this.filterChange.emit({ key, value });
-  }
-
-  onToggleChange(value: boolean) {
-    this.toggleChange.emit(value);
+  onSearch() {
+   this.searchSub$.next(this.searchTerm())
   }
 }

@@ -5,7 +5,7 @@
   </div>
 
   <div class="custom-toggle">
-    <input type="checkbox" id="viewToggle" (change)="onToggle()"/>
+    <input type="checkbox" id="viewToggle" (change)="onToggle()" />
     <label for="viewToggle">
       <span class="icons">
         <mat-icon class="icon left" matTooltip="Table View">table_rows</mat-icon>
@@ -15,14 +15,25 @@
   </div>
 </div>
 
+<!-- Filters and actions toolbar -->
+<app-table-toolbar
+  [filtersConfig]="filtersConfig()"
+  (filtersChange)="onFiltersChange($event)"
+  (resetFilters)="onResetFilters()"
+></app-table-toolbar>
+
+<!-- Employee data table or card view -->
 @if (isTableView()) {
   <app-data-table
-    [data]="employees"
+    [dataSource]="dataSource"
     [visibleColumns]="displayedColumns"
     (tableAction)="handleTableAction($event)"
     [tableActions]="tableActions"
-    [enablePagination]="enablePagination"
   ></app-data-table>
 } @else {
   <p>Card view coming soon...</p>
 }
+
+<!-- Pagination controls -->
+<mat-paginator [length]="employees().length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+</mat-paginator>

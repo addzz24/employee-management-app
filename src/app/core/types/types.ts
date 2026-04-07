@@ -34,3 +34,10 @@ export type TableActionEvent = {
   action: any;
   data: any;
 };
+
+export type TableFilterConfig = {
+  key: string;
+  label: string;
+  type: 'select' | 'date' | 'text';
+  options?: string[];
+}

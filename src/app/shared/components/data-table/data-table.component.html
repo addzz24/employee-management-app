@@ -1,5 +1,5 @@
 <!-- Data table -->
-<table mat-table [dataSource]="dataSource" matSort>
+<table mat-table [dataSource]="dataSource()" matSort>
   @for (column of visibleColumns(); track column) {
     <ng-container [matColumnDef]="column">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="font-bold">
@@ -47,7 +47,4 @@
   <tr mat-header-row *matHeaderRowDef="visibleColumns()"></tr>
   <tr mat-row *matRowDef="let row; columns: visibleColumns()"></tr>
 </table>
-@if (enablePagination()) {
-  <mat-paginator [length]="data().length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-  </mat-paginator>
-}
+

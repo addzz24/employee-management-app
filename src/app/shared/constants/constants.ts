@@ -1,4 +1,4 @@
-import { Employee } from "../../core/types/types";
+import { Employee, TableFilterConfig } from '../../core/types/types';
 
 export const EMPLOYEE_DISPLAYED_COLUMNS: string[] = [
   'name',
@@ -10,12 +10,33 @@ export const EMPLOYEE_DISPLAYED_COLUMNS: string[] = [
   'employmentType',
   'status',
   'currency',
-  'actions'
+  'actions',
 ];
 
 export const EMPLOYEE_TABLE_ACTIONS = [
   { label: 'Edit', icon: 'edit', tooltip: 'Edit Employee' },
-  { label: 'Delete', icon: 'delete', tooltip: 'Delete Employee' }
+  { label: 'Delete', icon: 'delete', tooltip: 'Delete Employee' },
+];
+
+export const FILTER_CONFIGS : TableFilterConfig[] = [
+  {
+    key: 'department',
+    label: 'Department',
+    type: 'select',
+    options: ['Engineering', 'HR', 'Sales', 'Marketing'],
+  },
+  {
+    key: 'status',
+    label: 'Status',
+    type: 'select',
+    options: ['Active', 'Inactive', 'On Leave'],
+  },
+  {
+    key: 'designation',
+    label: 'Designation',
+    type: 'select',
+    options: ['Software Engineer', 'HR Manager', 'Sales Executive', 'Marketing Specialist'],
+  },
 ];
 
 export const DEFAULT_EMPLOYEES: Employee[] = [
@@ -32,8 +53,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: 'Apt 4B',
         city: 'New York',
         pincode: 10001,
-        state: 'NY'
-      }
+        state: 'NY',
+      },
     ],
     education: 'B.Sc. Computer Science',
     joiningDate: '2020-06-15',
@@ -42,7 +63,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 80000,
     bonus: 5000,
-    currency: 'USD'
+    currency: 'USD',
   },
   {
     id: 2,
@@ -57,8 +78,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: '',
         city: 'Los Angeles',
         pincode: 90001,
-        state: 'CA'
-      }
+        state: 'CA',
+      },
     ],
     education: 'MBA',
     joiningDate: '2018-03-10',
@@ -67,7 +88,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 120000,
     bonus: 10000,
-    currency: 'USD'
+    currency: 'USD',
   },
   {
     id: 3,
@@ -82,8 +103,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: 'Suite 5C',
         city: 'Chicago',
         pincode: 60601,
-        state: 'IL'
-      }
+        state: 'IL',
+      },
     ],
     education: 'B.Des. UX Design',
     joiningDate: '2019-11-01',
@@ -92,7 +113,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 90000,
     bonus: 7000,
-    currency: 'USD'
+    currency: 'USD',
   },
   {
     id: 4,
@@ -107,8 +128,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: '',
         city: 'San Francisco',
         pincode: 94101,
-        state: 'CA'
-      }
+        state: 'CA',
+      },
     ],
     education: 'B.Sc. Data Science',
     joiningDate: '2021-01-20',
@@ -117,7 +138,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 70000,
     bonus: 3000,
-    currency: 'USD'
+    currency: 'USD',
   },
   {
     id: 5,
@@ -132,8 +153,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: 'Apt 2A',
         city: 'Seattle',
         pincode: 98101,
-        state: 'WA'
-      }
+        state: 'WA',
+      },
     ],
     education: 'B.A. Human Resources',
     joiningDate: '2017-05-15',
@@ -142,7 +163,7 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 85000,
     bonus: 6000,
-    currency: 'USD'
+    currency: 'USD',
   },
   {
     id: 6,
@@ -157,8 +178,8 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
         line2: '',
         city: 'Austin',
         pincode: 73301,
-        state: 'TX'
-      }
+        state: 'TX',
+      },
     ],
     education: 'B.Sc. Computer Engineering',
     joiningDate: '2016-09-01',
@@ -167,6 +188,6 @@ export const DEFAULT_EMPLOYEES: Employee[] = [
     status: 'Active',
     salary: 95000,
     bonus: 8000,
-    currency: 'USD'
-  }
+    currency: 'USD',
+  },
 ];

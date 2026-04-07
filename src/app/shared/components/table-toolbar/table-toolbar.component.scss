@@ -1,42 +1,70 @@
 @use '../../../styles/variables' as *;
 
-.toolbar {
+.btn {
+  font-size: 1rem;
+  color: $text-white;
+  background-color: $primary;
+  border-radius: $radius;
+  border: 1px solid $border-color;
+  cursor: pointer;
+}
+
+.toolbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background: white;
+  padding: 1rem;
+  background-color: $bg-card;
   border: 1px solid $border-color;
   border-radius: $radius;
-  padding: 12px 16px;
-}
-
-.left {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-}
-
-/* Search */
-.search {
-  width: 260px;
-}
-
-/* Filters */
-.filter {
-  min-width: 180px;
-}
-
-/* Material overrides */
-.mat-mdc-form-field {
-  --mdc-outlined-text-field-container-shape: 8px;
-}
-
-.mat-mdc-text-field-wrapper {
+  margin-bottom: 8px;
   height: 40px;
+
+  .filter-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* PANEL LAYOUT */
+.filter-panel {
+  width: 284px;
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* EACH FIELD */
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* LABEL */
+.filter-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $text-secondary;
+}
+
+/* ACTION BUTTONS */
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  align-items: center;
+
+  .btn{
+    width: 5rem;
+    height: 2rem;
+  }
+}
+
+.btn-secondary {
+  color: $text-secondary;
 }
