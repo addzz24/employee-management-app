@@ -35,12 +35,9 @@
     width: 100%;
   }
 
-  .arrow-icon {
-    color: $text-primary !important;
-  }
-
+  .arrow-icon,
   .info-icon {
-    color: $text-success-200 !important;
+    color: $primary !important;
   }
 
   .delete-icon {
