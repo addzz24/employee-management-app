@@ -39,7 +39,9 @@
     }
 
     <tr mat-header-row *matHeaderRowDef="visibleColumns()"></tr>
-    <tr mat-row *matRowDef="let row; columns: visibleColumns()"></tr>
+    @if (!loading()) {
+      <tr mat-row *matRowDef="let row; columns: visibleColumns()"></tr>
+    }
   </table>
 
   @if (loading()) {

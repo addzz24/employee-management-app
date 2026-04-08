@@ -80,7 +80,7 @@ export class EmployeeDetailsComponent implements OnInit {
         next: (res) => {
           this.employees.set(res.data);
           this.totalEmployees.set(res.total);
-          this.dataSource.data = res.data;
+          this.dataSource = new MatTableDataSource(res.data);
         },
         error: () => console.error('Failed to fetch employees'),
       });
@@ -127,13 +127,13 @@ export class EmployeeDetailsComponent implements OnInit {
 
   handleTableAction(event: any) {
     switch (event.action) {
-    case 'Edit':
-      this.handleEditDialog(event.data);
-      break;
-    case 'Delete':
-      this.handleDelete(event.data);
-      break;
-  }
+      case 'Edit':
+        this.handleEditDialog(event.data);
+        break;
+      case 'Delete':
+        this.handleDelete(event.data);
+        break;
+    }
   }
 
   handleDelete(employee: Employee) {
@@ -143,7 +143,7 @@ export class EmployeeDetailsComponent implements OnInit {
       panelClass: 'custom-dialog-container',
       data: {
         title: 'Delete Confirmation',
-        message: `Are you sure want to delete employee ${employee.name} (${employee.designation})`
+        message: `Are you sure want to delete employee ${employee.name} (${employee.designation})`,
       },
     });
 
@@ -184,15 +184,15 @@ export class EmployeeDetailsComponent implements OnInit {
     });
   }
 
-  deleteEmployee(employee: Employee){
+  deleteEmployee(employee: Employee) {
     this.employeeService.deleteEmployee(employee.id).subscribe({
-        next: (response) => {
-          this.snackBar.open('Employee deleted successfully!', 'Close', { duration: 6000 });
-          this.loadEmployees();
-        },
-        error: (err) => {
-          this.snackBar.open('Failed to delete employee', 'Close');
-        }
-      });
+      next: (response) => {
+        this.snackBar.open('Employee deleted successfully!', 'Close', { duration: 6000 });
+        this.loadEmployees();
+      },
+      error: (err) => {
+        this.snackBar.open('Failed to delete employee', 'Close');
+      },
+    });
   }
 }

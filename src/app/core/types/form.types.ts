@@ -15,7 +15,6 @@ export type EmployeeForm = FormGroup<{
   department: FormControl<string>;
   designation: FormControl<string>;
   dob: FormControl<string>;
-  country: FormControl<string>;
   address: FormArray<AddressForm>;
   education: FormControl<string>;
   joiningDate: FormControl<string>;

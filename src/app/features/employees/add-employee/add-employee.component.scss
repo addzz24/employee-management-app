@@ -18,3 +18,10 @@
     margin: 0;
   }
 }
+
+.loader-overlay{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: $rem-10;
+}

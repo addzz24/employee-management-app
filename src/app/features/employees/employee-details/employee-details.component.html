@@ -36,19 +36,22 @@
   } @else {
     <div class="card-list">
       @for (emp of employees(); track emp.id) {
-        <app-data-card class="card-list-item" [employee]="emp" (delete)="handleTableAction($event)"></app-data-card>
+        <app-data-card
+          class="card-list-item"
+          [employee]="emp"
+          (delete)="handleTableAction($event)"
+        ></app-data-card>
       }
     </div>
   }
 
   <!-- Pagination controls -->
-<mat-paginator
-  [length]="totalEmployees()"
-  [pageSize]="pageSize()"
-  [pageIndex]="currentPage()"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="onPageChange($event)">
-</mat-paginator>
-
-
+  <mat-paginator
+    [length]="totalEmployees()"
+    [pageSize]="pageSize()"
+    [pageIndex]="currentPage()"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
 </div>

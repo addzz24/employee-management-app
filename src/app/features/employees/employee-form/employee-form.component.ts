@@ -83,7 +83,6 @@ export class EmployeeFormComponent implements OnInit {
       designation: this.fb.nonNullable.control('', [Validators.required]),
       dob: this.fb.nonNullable.control('', Validators.required),
       address: this.fb.array([this.createAddressGroup()], Validators.required),
-      country: this.fb.nonNullable.control('', [Validators.minLength(2), Validators.maxLength(60)]),
       education: this.fb.nonNullable.control('', [
         Validators.minLength(2),
         Validators.maxLength(100),
