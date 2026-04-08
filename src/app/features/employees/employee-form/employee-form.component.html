@@ -163,7 +163,13 @@
           <div class="form-field">
             <label>Total Experience</label>
             <mat-form-field subscriptSizing="dynamic" appearance="outline">
-              <input matInput type="number" formControlName="experience" placeholder="Enter Total Years Of Experience " />
+              <input
+                matInput
+                type="number"
+                formControlName="experience"
+                placeholder="Enter Total Years Of Experience"
+                (keydown)="blockNonNumeric($event)"
+              />
             </mat-form-field>
             <ng-container
               *ngTemplateOutlet="
@@ -179,22 +185,61 @@
           <div class="form-field">
             <label>Salary</label>
             <mat-form-field subscriptSizing="dynamic" appearance="outline">
-              <input matInput type="number" formControlName="salary" placeholder="Enter Salary" />
+              <input
+                matInput
+                type="number"
+                formControlName="salary"
+                placeholder="Enter Salary"
+                (keydown)="blockNonNumeric($event)"
+              />
             </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['salary'],
+                  label: 'Salary',
+                }
+              "
+            ></ng-container>
           </div>
 
           <div class="form-field">
             <label>Bonus</label>
             <mat-form-field subscriptSizing="dynamic" appearance="outline">
-              <input matInput type="number" formControlName="bonus" placeholder="Enter Bonus" />
+              <input
+                matInput
+                type="number"
+                formControlName="bonus"
+                placeholder="Enter Bonus"
+                (keydown)="blockNonNumeric($event)"
+              />
             </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['bonus'],
+                  label: 'Bonus',
+                }
+              "
+            ></ng-container>
           </div>
 
           <div class="form-field">
             <label>Currency</label>
             <mat-form-field subscriptSizing="dynamic" appearance="outline">
-              <input matInput type="number" formControlName="currency" placeholder="Enter Currency" />
+              <input matInput type="text" formControlName="currency" placeholder="Enter Currency" />
             </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['currency'],
+                  label: 'Currency',
+                }
+              "
+            ></ng-container>
           </div>
         </div>
       </div>
@@ -218,20 +263,39 @@
               <div class="form-field">
                 <label>Address Type</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="type" placeholder="Enter Address Type" />
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="type"
+                    placeholder="Enter Address Type"
+                  />
                 </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['type'],
+                      label: 'Address Type',
+                    }
+                  "
+                ></ng-container>
               </div>
               <div class="form-field">
                 <label>Address Line 1</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="line1" placeholder="Enter Address Line 1" />
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="line1"
+                    placeholder="Enter Address Line 1"
+                  />
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
                     formError;
                     context: {
                       $implicit: getAddressControls(i)['line1'],
-                      label: 'Line 1',
+                      label: 'Address Line 1',
                     }
                   "
                 ></ng-container>
@@ -239,13 +303,27 @@
               <div class="form-field">
                 <label>Address Line 2</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="line2" placeholder="Enter Address Line 2"/>
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="line2"
+                    placeholder="Enter Address Line 2"
+                  />
                 </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['line2'],
+                      label: 'Address Line 2',
+                    }
+                  "
+                ></ng-container>
               </div>
               <div class="form-field">
                 <label>City</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="city" placeholder="Enter City"/>
+                  <input matInput type="text" formControlName="city" placeholder="Enter City" />
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
@@ -260,7 +338,12 @@
               <div class="form-field">
                 <label>Pincode</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="pincode" placeholder="Enter Pincode"/>
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="pincode"
+                    placeholder="Enter Pincode"
+                  />
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
@@ -275,8 +358,17 @@
               <div class="form-field">
                 <label>State</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="state" placeholder="Enter State"/>
+                  <input matInput type="text" formControlName="state" placeholder="Enter State" />
                 </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['state'],
+                      label: 'State',
+                    }
+                  "
+                ></ng-container>
               </div>
             </div>
             <button type="button" class="btn-remove" (click)="removeAddress(i)">Remove</button>
@@ -288,8 +380,14 @@
 </form>
 
 <div class="form-actions">
-  <button class="btn-primary" [class.btn-disabled]="employeeForm.invalid"
-     (click)="onSubmit()" [disabled]="employeeForm.invalid" >Submit</button>
+  <button
+    class="btn-primary"
+    [class.btn-disabled]="employeeForm.invalid"
+    (click)="onSubmit()"
+    [disabled]="employeeForm.invalid"
+  >
+    Submit
+  </button>
 </div>
 
 <ng-template #formError let-control let-label="label">

@@ -74,31 +74,66 @@ export class EmployeeFormComponent implements OnInit {
   initForm() {
     this.employeeForm = this.fb.group({
       id: this.fb.nonNullable.control(0),
-      name: this.fb.nonNullable.control('', Validators.required),
-      department: this.fb.nonNullable.control('', Validators.required),
-      designation: this.fb.nonNullable.control('', Validators.required),
+      name: this.fb.nonNullable.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+      ]),
+      department: this.fb.nonNullable.control('', [Validators.required]),
+      designation: this.fb.nonNullable.control('', [Validators.required]),
       dob: this.fb.nonNullable.control('', Validators.required),
-      address: this.fb.array([this.createAddressGroup()]),
-      country: this.fb.nonNullable.control(''),
-      education: this.fb.nonNullable.control(''),
+      address: this.fb.array([this.createAddressGroup()], Validators.required),
+      country: this.fb.nonNullable.control('', [Validators.minLength(2), Validators.maxLength(60)]),
+      education: this.fb.nonNullable.control('', [
+        Validators.minLength(2),
+        Validators.maxLength(100),
+      ]),
       joiningDate: this.fb.nonNullable.control('', Validators.required),
-      experience: this.fb.control<number | null>(null, Validators.required),
+      experience: this.fb.control<number | null>(null, [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(50),
+      ]),
       employmentType: this.fb.nonNullable.control('', Validators.required),
       status: this.fb.nonNullable.control('', Validators.required),
-      salary: this.fb.control<number | null>(null),
-      bonus: this.fb.control<number | null>(null),
-      currency: this.fb.nonNullable.control('INR'),
+      salary: this.fb.control<number | null>(null, [Validators.min(0), Validators.max(10000000)]),
+      bonus: this.fb.control<number | null>(null, [Validators.min(0), Validators.max(5000000)]),
+      currency: this.fb.nonNullable.control('INR', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(3),
+      ]),
     });
   }
 
   createAddressGroup() {
     return this.fb.group({
-      type: this.fb.nonNullable.control(''),
-      line1: this.fb.nonNullable.control('', Validators.required),
-      line2: this.fb.nonNullable.control(''),
-      city: this.fb.nonNullable.control('', Validators.required),
-      pincode: this.fb.control<number | null>(null, Validators.required),
-      state: this.fb.nonNullable.control('', Validators.required),
+      type: this.fb.nonNullable.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(20),
+      ]),
+      line1: this.fb.nonNullable.control('', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(100),
+      ]),
+      line2: this.fb.nonNullable.control('', [Validators.maxLength(100)]),
+      city: this.fb.nonNullable.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
+      pincode: this.fb.control<number | null>(null, [
+        Validators.required,
+        Validators.min(1000),
+        Validators.max(99999999),
+      ]),
+      state: this.fb.nonNullable.control('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
     });
   }
 
@@ -166,5 +201,25 @@ export class EmployeeFormComponent implements OnInit {
 
   getAddressControls(index: number) {
     return this.getAddressGroup(index).controls;
+  }
+
+  blockNonNumeric(event: KeyboardEvent): void {
+    const allowedKeys = [
+      'Backspace',
+      'Delete',
+      'Tab',
+      'Escape',
+      'Enter',
+      'ArrowLeft',
+      'ArrowRight',
+    ];
+
+    if (allowedKeys.includes(event.key)) {
+      return;
+    }
+
+    if (!/^[0-9]$/.test(event.key)) {
+      event.preventDefault();
+    }
   }
 }
