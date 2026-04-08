@@ -25,9 +25,13 @@
       flex-direction: row;
       margin-left: $rem-2;
       gap: 10px;
+      cursor: pointer !important;
       .nav-item {
-        cursor: pointer;
         &:hover {
+          color: $primary !important;
+        }
+
+        &.selected {
           color: $primary !important;
         }
       }

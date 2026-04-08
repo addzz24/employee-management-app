@@ -3,9 +3,9 @@
     <img src="assets/logo.svg" alt="Logo" />
     <span class="logo">EmpManage</span>
     <nav>
-      <a class="nav-item" (click)="onNavItemClick('dashboard')">Dashboard</a>
-      <a class="nav-item" (click)="onNavItemClick('employees')">Employee List</a>
-      <a class="nav-item" (click)="onNavItemClick('add-employee')">Add Employee</a>
+      <a class="nav-item" [class.selected]="currentRoute() === '/dashboard'" (click)="onNavItemClick('dashboard')">Dashboard</a>
+      <a class="nav-item" [class.selected]="currentRoute() === '/employees'" (click)="onNavItemClick('employees')">Employee List</a>
+      <a class="nav-item" [class.selected]="currentRoute() === '/add-employee'" (click)="onNavItemClick('add-employee')">Add Employee</a>
     </nav>
   </div>
 
