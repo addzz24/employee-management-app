@@ -251,7 +251,15 @@
       <mat-expansion-panel-header>
         <mat-panel-title> Addresses </mat-panel-title>
         <mat-panel-description>
-          <button type="button" class="btn-add" (click)="addAddress($event)">+ Add</button>
+          <button
+            matButton="outlined"
+            color="primary"
+            (click)="addAddress($event)"
+            matTooltip="Add Address"
+          >
+            <mat-icon>add</mat-icon>
+            Add
+          </button>
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -371,7 +379,17 @@
                 ></ng-container>
               </div>
             </div>
-            <button type="button" class="btn-remove" (click)="removeAddress(i)">Remove</button>
+            <div class="delete-btn-wrapper">
+              <button
+                type="button"
+                matButton="tonal"
+                color="primary"
+                matTooltip="Delete Address"
+                (click)="removeAddress(i)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
           </div>
         }
       </div>
@@ -381,9 +399,11 @@
 
 <div class="form-actions">
   <button
-    class="btn-primary"
-    [class.btn-disabled]="employeeForm.invalid"
+    type="submit"
+    mat-flat-button
+    color="primary"
     (click)="onSubmit()"
+    matTooltip="Submit"
     [disabled]="employeeForm.invalid"
   >
     Submit
