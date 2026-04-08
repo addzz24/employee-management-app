@@ -13,11 +13,23 @@
     display: flex;
     align-items: center;
     justify-content: start;
+    gap: $rem-1;
 
-    .nav-item {
-      cursor: pointer;
-      &:hover {
-        color: $primary !important;
+    img {
+      width: 42px;
+      height: 42px;
+    }
+
+    nav {
+      display: flex;
+      flex-direction: row;
+      margin-left: $rem-2;
+      gap: 10px;
+      .nav-item {
+        cursor: pointer;
+        &:hover {
+          color: $primary !important;
+        }
       }
     }
   }
