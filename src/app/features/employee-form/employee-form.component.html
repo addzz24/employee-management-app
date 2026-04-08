@@ -1,0 +1,335 @@
+<form [formGroup]="employeeForm" class="emp-form-group">
+  <!-- SECTION: BASIC INFO -->
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Basic Information </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="form-section">
+        <div class="grid-2">
+          <div class="form-field">
+            <label>Name</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput formControlName="name" placeholder="Enter Name" />
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['name'],
+                  label: 'Name',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Date of birth</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="date" formControlName="dob" placeholder="Enter DOB" />
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['dob'],
+                  label: 'Date of birth',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Education</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput formControlName="education" placeholder="Enter Education" />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Joining Date</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="date" formControlName="joiningDate" />
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['joiningDate'],
+                  label: 'Joining Date',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Department</label>
+            <mat-form-field
+              subscriptSizing="dynamic"
+              appearance="outline"
+              class="custom-select-height"
+            >
+              <mat-select formControlName="department" placeholder="Select department">
+                @for (dept of departments; track dept) {
+                  <mat-option [value]="dept">{{ dept }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['department'],
+                  label: 'Department',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Designation</label>
+            <mat-form-field
+              subscriptSizing="dynamic"
+              appearance="outline"
+              class="custom-select-height"
+            >
+              <mat-select formControlName="designation" placeholder="Select designation">
+                @for (role of designations; track role) {
+                  <mat-option [value]="role">{{ role }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['designation'],
+                  label: 'Designation',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Status</label>
+            <mat-form-field
+              subscriptSizing="dynamic"
+              appearance="outline"
+              class="custom-select-height"
+            >
+              <mat-select formControlName="status" placeholder="Select status">
+                @for (status of statuses; track status) {
+                  <mat-option [value]="status">{{ status }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['status'],
+                  label: 'Status',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Employment Type</label>
+            <mat-form-field
+              subscriptSizing="dynamic"
+              appearance="outline"
+              class="custom-select-height"
+            >
+              <mat-select formControlName="employmentType" placeholder="Select type">
+                @for (type of employmentTypes; track type) {
+                  <mat-option [value]="type">{{ type }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['employmentType'],
+                  label: 'Employment Type',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Total Experience</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="number" formControlName="experience" placeholder="Enter Total Years Of Experience " />
+            </mat-form-field>
+            <ng-container
+              *ngTemplateOutlet="
+                formError;
+                context: {
+                  $implicit: getFormControls['experience'],
+                  label: 'Experience',
+                }
+              "
+            ></ng-container>
+          </div>
+
+          <div class="form-field">
+            <label>Salary</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="number" formControlName="salary" placeholder="Enter Salary" />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Bonus</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="number" formControlName="bonus" placeholder="Enter Bonus" />
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Currency</label>
+            <mat-form-field subscriptSizing="dynamic" appearance="outline">
+              <input matInput type="number" formControlName="currency" placeholder="Enter Currency" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion class="accordion-container">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Addresses </mat-panel-title>
+        <mat-panel-description>
+          <button type="button" class="btn-add" (click)="addAddress($event)">+ Add</button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- SECTION: ADDRESS -->
+      <div class="form-section" formArrayName="address">
+        @for (addr of addressArray.controls; let i = $index; track i) {
+          <div [formGroupName]="i" class="address-card">
+            <div class="grid-3">
+              <div class="form-field">
+                <label>Type</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="type" />
+                </mat-form-field>
+              </div>
+              <div class="form-field">
+                <label>Line 1</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="line1" />
+                </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['line1'],
+                      label: 'Line 1',
+                    }
+                  "
+                ></ng-container>
+              </div>
+              <div class="form-field">
+                <label>Line 2</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="line2" />
+                </mat-form-field>
+              </div>
+              <div class="form-field">
+                <label>City</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="city" />
+                </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['city'],
+                      label: 'City',
+                    }
+                  "
+                ></ng-container>
+              </div>
+              <div class="form-field">
+                <label>Pincode</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="pincode" />
+                </mat-form-field>
+                <ng-container
+                  *ngTemplateOutlet="
+                    formError;
+                    context: {
+                      $implicit: getAddressControls(i)['pincode'],
+                      label: 'Pincode',
+                    }
+                  "
+                ></ng-container>
+              </div>
+              <div class="form-field">
+                <label>State</label>
+                <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                  <input matInput type="text" formControlName="state" />
+                </mat-form-field>
+              </div>
+            </div>
+            <button type="button" class="btn-remove" (click)="removeAddress(i)">Remove</button>
+          </div>
+        }
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+
+<div class="form-actions">
+  <button class="btn-primary" (click)="onSubmit()">Submit</button>
+</div>
+
+<ng-template #formError let-control let-label="label">
+  @if ((control.dirty || control.touched) && control.invalid) {
+    <div class="error">
+      @if (control.errors?.['required']) {
+        <span>{{ label }} is required</span>
+      }
+
+      @if (control.errors?.['minlength']) {
+        <span>
+          {{ label }} must be at least {{ control.errors['minlength'].requiredLength }} digits
+        </span>
+      }
+
+      @if (control.errors?.['maxlength']) {
+        <span>
+          {{ label }} must be at most {{ control.errors['maxlength'].requiredLength }} digits
+        </span>
+      }
+
+      @if (control.errors?.['min'] && control.errors?.['max']) {
+        <span>
+          {{ label }} must be between {{ control.errors['min'].min }} and
+          {{ control.errors['max'].max }}
+        </span>
+      } @else if (control.errors?.['min']) {
+        <span>
+          {{ label }} must be at least
+          {{ control.errors['min'].min }}
+        </span>
+      } @else if (control.errors?.['max']) {
+        <span>
+          {{ label }} must be at most
+          {{ control.errors['max'].max }}
+        </span>
+      }
+
+      @if (control.errors?.['pattern']) {
+        <span>Enter valid {{ label }}</span>
+      }
+    </div>
+  }
+</ng-template>

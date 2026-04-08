@@ -3,9 +3,9 @@
 /* Mat Card */
 .mat-mdc-card {
   border-radius: $radius !important;
-  box-shadow: $shadow-card !important;
   border: 1px solid $border-color;
   padding: 16px;
+  background: $bg-card !important;
 }
 
 /* Mat Table */
@@ -38,7 +38,6 @@
   }
 }
 
-/* Table Header */
 .mat-mdc-header-row {
   background: $primary-light !important;
 }
@@ -64,14 +63,13 @@
   }
 }
 
-/* Cells */
 .mat-mdc-cell {
   padding: 16px;
   color: $text-secondary;
   height: 4rem !important;
 }
 
-/* Remove bottom border from table body rows */
+/* To Remove bottom border from table body rows */
 .mat-mdc-table {
   .mat-mdc-cell,
   .mat-mdc-header-cell {
@@ -82,21 +80,7 @@
   }
 }
 
-/* Mat Button */
-.mat-mdc-raised-button.mat-primary {
-  background: $primary !important;
-  border-radius: $radius;
-}
-
-/* INPUT */
-.mat-mdc-form-field {
-  width: 100%;
-}
-
-.mat-mdc-text-field-wrapper {
-  border-radius: $radius !important;
-  border: 1px solid $border-color !important;
-}
+/* Input Fields */
 
 .search-wrapper {
   .mat-mdc-form-field {
@@ -105,10 +89,8 @@
 
   .mat-mdc-text-field-wrapper {
     height: 40px !important;
-
     display: flex;
     align-items: center;
-
     padding: 0 12px !important;
   }
 
@@ -117,32 +99,20 @@
     padding: 0 !important;
     height: auto !important;
   }
-
-  /* Remove default underline/outline */
-  .mdc-line-ripple,
-  .mdc-notched-outline {
-    display: none !important;
-  }
-
-  /* Focus state */
-  .mat-mdc-text-field-wrapper.mat-focused {
-    border-color: $primary !important;
-    box-shadow: 0 0 0 2px rgba($primary, 0.2);
-  }
 }
 
-.mat-mdc-menu-panel{
-  max-width: 312px !important;
+.mat-mdc-menu-panel {
+  max-width: 320px !important;
+  background: $bg-main !important;
+}
+
+.mat-mdc-input-element::placeholder {
+  font-size: 14px !important;
 }
 
 .custom-select-height {
   --mat-form-field-container-height: 2.5rem;
   --mat-form-field-container-vertical-padding: 0.5rem;
-
-  .mdc-notched-outline,
-  .mdc-line-ripple {
-    display: none !important;
-  }
 
   .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
     top: 50%;
@@ -161,14 +131,7 @@
     height: 40px !important;
   }
 
-
-  &.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
-    .mat-mdc-floating-label {
-    transform: translateY(-1.1em) scale(0.75);
-  }
-
-  .mat-mdc-form-field-infix {
-    padding-top: 0px;
-    padding-bottom: 0px;
+  .mat-mdc-select-placeholder{
+    font-size: 14px !important;
   }
 }

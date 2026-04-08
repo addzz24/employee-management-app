@@ -3,11 +3,11 @@
     <mat-form-field appearance="outline" subscriptSizing="dynamic">
       <input
         class="search-input"
-        type="email"
+        type="text"
         matInput
         [ngModel]="searchTerm()"
         (ngModelChange)="onSearch($event)"
-        placeholder="search by name"
+        placeholder="Search by name"
       />
     </mat-form-field>
   </div>
@@ -48,7 +48,7 @@
               appearance="outline"
               class="custom-select-height"
             >
-              <mat-select [(ngModel)]="filters[filter.key]">
+              <mat-select [(ngModel)]="filters[filter.key]" [placeholder]="filter.label">
                 @for (option of filter.options; track option) {
                   <mat-option [value]="option">{{ option }}</mat-option>
                 }

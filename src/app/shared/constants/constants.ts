@@ -13,6 +13,22 @@ export const EMPLOYEE_DISPLAYED_COLUMNS: string[] = [
   'actions',
 ];
 
+export const DEPARTMENTS = ['Engineering', 'HR', 'Sales', 'Marketing', 'Finance'];
+
+export const EMPLOYMENT_TYPES = ['Full-time', 'Part-time', 'Contractor', 'Intern'];
+
+export const STATUSES = ['Active', 'Inactive'];
+
+export const DESIGNATIONS = [
+  'Frontend Developer',
+  'Senior Project Manager',
+  'Lead UX Designer',
+  'Junior Data Analyst',
+  'HR Manager',
+  'Senior DevOps Engineer',
+  'Junior HR Specialist',
+];
+
 export const EMPLOYEE_TABLE_ACTIONS = [
   { label: 'Edit', icon: 'edit', tooltip: 'Edit Employee' },
   { label: 'Delete', icon: 'delete', tooltip: 'Delete Employee' },
@@ -23,19 +39,19 @@ export const FILTER_CONFIGS : TableFilterConfig[] = [
     key: 'department',
     label: 'Department',
     type: 'select',
-    options: ['Engineering', 'HR'],
+    options: DEPARTMENTS,
   },
   {
     key: 'status',
     label: 'Status',
     type: 'select',
-    options: ['Active', 'Inactive', 'On Leave'],
+    options: STATUSES,
   },
   {
     key: 'designation',
     label: 'Designation',
     type: 'select',
-    options: ['Frontend Developer', 'Senior Project Manager', 'Lead UX Designer', 'Junior Data Analyst', 'HR Manager', 'Senior DevOps Engineer', 'Junior HR Specialist'],
+    options: DESIGNATIONS,
   },
 ];
 
