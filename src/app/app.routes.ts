@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { pendingChangesGuard } from './core/guards/pending-changes.guard';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,7 @@ export const routes: Routes = [
           import('../app/features/employees/add-employee/add-employee.component').then(
             (m) => m.AddEmployeeComponent,
           ),
+        canDeactivate: [pendingChangesGuard]
       },
       {
         path: '',

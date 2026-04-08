@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { TableAction, TableActionEvent } from '../../../core/types/types';
 import { TitleCaseSplitPipe } from '../../../core/pipes/title-case-split.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-data-table',
@@ -27,6 +28,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     MatIconModule,
     MatTooltipModule,
     MatProgressSpinner,
+    MatChipsModule,
     TitleCaseSplitPipe
 ],
   templateUrl: './data-table.component.html',
