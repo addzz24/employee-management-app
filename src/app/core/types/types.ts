@@ -3,7 +3,7 @@ export type Address = {
   line1: string;
   line2: string;
   city: string;
-  pincode: number;
+  pincode: number | null;
   state: string;
 };
 
@@ -16,11 +16,11 @@ export type Employee = {
   address: Address[];
   education: string;
   joiningDate: string;
-  experience: number;
+  experience: number | null;
   employmentType: string;
   status: string;
-  salary: number;
-  bonus: number;
+  salary: number | null;
+  bonus: number | null;
   currency: string;
 };
 

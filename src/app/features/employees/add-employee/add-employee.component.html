@@ -1,0 +1,17 @@
+<div class="employee-details-container">
+  <div class="heading">
+    <h1>Add New Employee</h1>
+    <p>Manage your team members, add employees and view employment status.</p>
+  </div>
+</div>
+
+@if (loading) {
+  <div class="loader-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+} @else {
+  <app-employee-form
+    [isEditMode]="false"
+    (formSubmit)="handleFormSubmit($event)"
+  ></app-employee-form>
+}

@@ -12,16 +12,16 @@ export const routes: Routes = [
           import('../app/features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
       },
       {
-        path: 'employee-list',
+        path: 'employees',
         loadComponent: () =>
-          import('../app/features/employee-details/employee-details.component').then(
+          import('../app/features/employees/employee-details/employee-details.component').then(
             (m) => m.EmployeeDetailsComponent,
           ),
       },
       {
         path: 'add-employee',
         loadComponent: () =>
-          import('../app/features/add-employee/add-employee.component').then(
+          import('../app/features/employees/add-employee/add-employee.component').then(
             (m) => m.AddEmployeeComponent,
           ),
       },

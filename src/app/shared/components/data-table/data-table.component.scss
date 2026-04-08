@@ -1,0 +1,9 @@
+
+
+/* If the styles STILL don't apply, use this as a last resort: */
+::ng-deep .loader-overlay {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 50vh;
+}

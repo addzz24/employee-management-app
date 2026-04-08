@@ -31,16 +31,24 @@
       [visibleColumns]="displayedColumns"
       (tableAction)="handleTableAction($event)"
       [tableActions]="tableActions"
+      [loading]="loading()"
     ></app-data-table>
   } @else {
     <div class="card-list">
-      @for (emp of paginatedEmployees; track emp.id) {
+      @for (emp of employees(); track emp.id) {
         <app-data-card class="card-list-item" [employee]="emp" (delete)="handleDelete($event)"></app-data-card>
       }
     </div>
   }
 
   <!-- Pagination controls -->
-  <mat-paginator [length]="employees().length" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-  </mat-paginator>
+<mat-paginator
+  [length]="totalEmployees()"
+  [pageSize]="pageSize()"
+  [pageIndex]="currentPage()"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)">
+</mat-paginator>
+
+
 </div>

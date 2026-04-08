@@ -1,13 +1,11 @@
 import {
   Component,
   ViewChild,
-  AfterViewInit,
   input,
   output,
+  OnChanges,
 } from '@angular/core';
 
-
-import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatSortModule, MatSort } from '@angular/material/sort';
@@ -16,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TableAction, TableActionEvent } from '../../../core/types/types';
 import { TitleCaseSplitPipe } from '../../../core/pipes/title-case-split.pipe';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-data-table',
@@ -27,19 +26,22 @@ import { TitleCaseSplitPipe } from '../../../core/pipes/title-case-split.pipe';
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
+    MatProgressSpinner,
     TitleCaseSplitPipe
 ],
   templateUrl: './data-table.component.html',
+  styleUrl: './data-table.component.scss'
 })
-export class DataTableComponent implements AfterViewInit {
+export class DataTableComponent implements OnChanges{
   dataSource = input.required<MatTableDataSource<any>>();
   visibleColumns = input<string[]>([]);
   tableActions = input<TableAction[]>([]);
+  loading = input(false);
   tableActionEmitter = output<TableActionEvent>();
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngAfterViewInit() {
+  ngOnChanges() {
     const ds = this.dataSource();
     if (ds) {
       ds.sort = this.sort;

@@ -1,0 +1,204 @@
+{
+  "employees": [
+    {
+      "id": "1775132170397",
+      "name": "John Doe",
+      "designation": "SDE2",
+      "department": "Engineering",
+      "dob": "1995-06-15",
+      "address": [
+        {
+          "type": "Permanent",
+          "line1": "Street 1",
+          "line2": "Area",
+          "city": "Mumbai",
+          "pincode": 400001,
+          "state": "MH"
+        }
+      ],
+      "education": "B.Tech",
+      "joiningDate": "2022-01-01",
+      "experience": 3,
+      "employmentType": "Full-time",
+      "status": "Active",
+      "salary": 1000000,
+      "bonus": 100000,
+      "currency": "INR"
+    },
+    {
+      "id": "1775640414229",
+      "name": "Atque commodo volupt",
+      "designation": "HR Manager",
+      "department": "HR",
+      "dob": "1991-09-22",
+      "address": [
+        {
+          "type": "Consectetur esse pe",
+          "line1": "Ut minim eveniet co",
+          "line2": "Autem illo quisquam ",
+          "city": "Repudiandae alias do",
+          "pincode": "Rerum tenetur exerci",
+          "state": "Beatae saepe minus v"
+        }
+      ],
+      "education": "Nesciunt magni nisi",
+      "joiningDate": "2011-02-23",
+      "experience": 67,
+      "employmentType": "Full-time",
+      "status": "Active",
+      "salary": 99,
+      "bonus": 30,
+      "currency": 73
+    },
+    {
+      "id": "1775640435449",
+      "name": "Qui ut rerum volupta",
+      "designation": "Lead UX Designer",
+      "department": "Engineering",
+      "dob": "2013-04-10",
+      "address": [
+        {
+          "type": "Repellendus Labore ",
+          "line1": "Et eiusmod et ea omn",
+          "line2": "Obcaecati consequunt",
+          "city": "Commodo qui cupidita",
+          "pincode": "Consequat Voluptas ",
+          "state": "Voluptatem Consequu"
+        }
+      ],
+      "education": "Quod in nesciunt eu",
+      "joiningDate": "2015-09-14",
+      "experience": 46,
+      "employmentType": "Part-time",
+      "status": "Inactive",
+      "salary": 84,
+      "bonus": 11,
+      "currency": 52
+    },
+    {
+      "id": "1775640451782",
+      "name": "Sunt qui earum et qu",
+      "designation": "Senior Project Manager",
+      "department": "Sales",
+      "dob": "1986-02-28",
+      "address": [
+        {
+          "type": "Tempora accusantium ",
+          "line1": "Reiciendis incididun",
+          "line2": "Minus laborum quia d",
+          "city": "In Nam incididunt as",
+          "pincode": "Modi asperiores culp",
+          "state": "Mollitia quam volupt"
+        }
+      ],
+      "education": "Rerum aut ratione qu",
+      "joiningDate": "1978-12-20",
+      "experience": 56,
+      "employmentType": "Full-time",
+      "status": "Inactive",
+      "salary": 69,
+      "bonus": 9,
+      "currency": 38
+    },
+    {
+      "id": "1775640471597",
+      "name": "Dolor laboriosam ut",
+      "designation": "Junior HR Specialist",
+      "department": "Sales",
+      "dob": "2001-06-25",
+      "address": [
+        {
+          "type": "Voluptatem rerum ill",
+          "line1": "Et earum in omnis re",
+          "line2": "Aperiam quod deserun",
+          "city": "Cupiditate assumenda",
+          "pincode": "Excepteur ut minima ",
+          "state": "Eum temporibus venia"
+        }
+      ],
+      "education": "Natus magnam ullam p",
+      "joiningDate": "1974-11-25",
+      "experience": 47,
+      "employmentType": "Full-time",
+      "status": "Inactive",
+      "salary": 70,
+      "bonus": 21,
+      "currency": 1
+    },
+    {
+      "id": "1775640489866",
+      "name": "Magnam molestias cup",
+      "designation": "Frontend Developer",
+      "department": "Engineering",
+      "dob": "1996-07-08",
+      "address": [
+        {
+          "type": "Ullam consequat Et ",
+          "line1": "Et officiis enim nes",
+          "line2": "Aute excepturi earum",
+          "city": "Repudiandae voluptat",
+          "pincode": "Voluptatum qui aliqu",
+          "state": "Aliquam nostrud poss"
+        }
+      ],
+      "education": "Exercitation et dese",
+      "joiningDate": "2020-10-05",
+      "experience": 94,
+      "employmentType": "Full-time",
+      "status": "Active",
+      "salary": 81,
+      "bonus": 35,
+      "currency": 77
+    },
+    {
+      "id": "1775640612833",
+      "name": "Sunt ea sint debiti",
+      "designation": "Senior DevOps Engineer",
+      "department": "Marketing",
+      "dob": "2024-06-22",
+      "address": [
+        {
+          "type": "Temporibus ut simili",
+          "line1": "Quos sunt nihil fugi",
+          "line2": "Molestiae laborum Q",
+          "city": "Pariatur Qui qui vo",
+          "pincode": "Minim consequatur r",
+          "state": "Libero quo nesciunt"
+        }
+      ],
+      "education": "Quidem exercitation ",
+      "joiningDate": "1996-05-10",
+      "experience": 7,
+      "employmentType": "Part-time",
+      "status": "Inactive",
+      "salary": 62,
+      "bonus": 54,
+      "currency": 64
+    },
+    {
+      "id": "1775640639765",
+      "name": "Numquam aliquip nisi",
+      "designation": "Senior Project Manager",
+      "department": "Marketing",
+      "dob": "2019-02-02",
+      "address": [
+        {
+          "type": "Cillum sed culpa fug",
+          "line1": "Optio modi consequa",
+          "line2": "Consequatur eligendi",
+          "city": "Maiores nesciunt fu",
+          "pincode": "Enim aut nostrud vol",
+          "state": "Veniam quos necessi"
+        }
+      ],
+      "education": "Non duis delectus h",
+      "joiningDate": "2003-08-14",
+      "experience": 78,
+      "employmentType": "Full-time",
+      "status": "Inactive",
+      "salary": 98,
+      "bonus": 18,
+      "currency": 43
+    }
+  ]
+}

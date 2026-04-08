@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit, Inject, viewChild } from '@angular/core';
+import { Component, inject, input, OnInit, Inject, viewChild, output } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -9,18 +9,19 @@ import {
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { EmployeeForm, AddressForm } from '../../core/types/form.types';
-import { Employee } from '../../core/types/types';
 import { MatIconModule } from '@angular/material/icon';
-import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { EmployeeForm, AddressForm } from '../../../core/types/form.types';
+import { Employee } from '../../../core/types/types';
 import {
   DEPARTMENTS,
   DESIGNATIONS,
-  EMPLOYMENT_TYPES,
   STATUSES,
-} from '../../shared/constants/constants';
-import { MatSelectModule } from '@angular/material/select';
-import { CommonModule } from '@angular/common';
+  EMPLOYMENT_TYPES,
+} from '../../../shared/constants/constants';
+
 @Component({
   selector: 'app-employee-form',
   imports: [
@@ -35,19 +36,20 @@ import { CommonModule } from '@angular/common';
   ],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss',
+  standalone: true,
 })
 export class EmployeeFormComponent implements OnInit {
   departments = DEPARTMENTS;
   designations = DESIGNATIONS;
   statuses = STATUSES;
   employmentTypes = EMPLOYMENT_TYPES;
+  employeeForm!: EmployeeForm;
 
   isEditMode = input<boolean>(false);
   data: any = input<Employee | null>(null);
-  employeeForm!: EmployeeForm;
-  fb = inject(FormBuilder);
+  formSubmit = output<Employee>();
 
-  accordion = viewChild.required(MatAccordion);
+  fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.initForm();
@@ -127,9 +129,9 @@ export class EmployeeFormComponent implements OnInit {
       this.employeeForm.markAllAsTouched();
       return;
     }
-    console.log(this.employeeForm.value);
+    this.formSubmit.emit(this.employeeForm.getRawValue());
+    this.employeeForm.reset();
   }
-
   get getFormControls() {
     return this.employeeForm.controls;
   }

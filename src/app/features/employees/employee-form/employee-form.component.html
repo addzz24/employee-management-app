@@ -2,7 +2,7 @@
   <!-- SECTION: BASIC INFO -->
 
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
         <mat-panel-title> Basic Information </mat-panel-title>
       </mat-expansion-panel-header>
@@ -202,7 +202,7 @@
   </mat-accordion>
 
   <mat-accordion class="accordion-container">
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded>
       <mat-expansion-panel-header>
         <mat-panel-title> Addresses </mat-panel-title>
         <mat-panel-description>
@@ -216,15 +216,15 @@
           <div [formGroupName]="i" class="address-card">
             <div class="grid-3">
               <div class="form-field">
-                <label>Type</label>
+                <label>Address Type</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="type" />
+                  <input matInput type="text" formControlName="type" placeholder="Enter Address Type" />
                 </mat-form-field>
               </div>
               <div class="form-field">
-                <label>Line 1</label>
+                <label>Address Line 1</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="line1" />
+                  <input matInput type="text" formControlName="line1" placeholder="Enter Address Line 1" />
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
@@ -237,15 +237,15 @@
                 ></ng-container>
               </div>
               <div class="form-field">
-                <label>Line 2</label>
+                <label>Address Line 2</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="line2" />
+                  <input matInput type="text" formControlName="line2" placeholder="Enter Address Line 2"/>
                 </mat-form-field>
               </div>
               <div class="form-field">
                 <label>City</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="city" />
+                  <input matInput type="text" formControlName="city" placeholder="Enter City"/>
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
@@ -260,7 +260,7 @@
               <div class="form-field">
                 <label>Pincode</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="pincode" />
+                  <input matInput type="text" formControlName="pincode" placeholder="Enter Pincode"/>
                 </mat-form-field>
                 <ng-container
                   *ngTemplateOutlet="
@@ -275,7 +275,7 @@
               <div class="form-field">
                 <label>State</label>
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                  <input matInput type="text" formControlName="state" />
+                  <input matInput type="text" formControlName="state" placeholder="Enter State"/>
                 </mat-form-field>
               </div>
             </div>
