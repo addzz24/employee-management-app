@@ -34,15 +34,10 @@
       [loading]="loading()"
     ></app-data-table>
   } @else {
-    <div class="card-list">
-      @for (emp of employees(); track emp.id) {
-        <app-data-card
-          class="card-list-item"
-          [employee]="emp"
-          (delete)="handleTableAction($event)"
-        ></app-data-card>
-      }
-    </div>
+    <ng-container
+      [ngTemplateOutlet]="!employees() || employees().length === 0 ? emptyState : cardListView"
+    >
+    </ng-container>
   }
 
   <!-- Pagination controls -->
@@ -55,3 +50,30 @@
   >
   </mat-paginator>
 </div>
+
+<ng-template #emptyState>
+  <div class="empty-state-wrapper">
+    <div class="empty-content">
+      <mat-icon class="empty-icon">group_off</mat-icon>
+      <h3>No Data Found</h3>
+      <p>It looks like there are no records in the system yet.</p>
+
+      <button mat-flat-button color="primary" class="mt-4" (click)="onAddItemClick()">
+        <mat-icon>add</mat-icon>
+        Add Your Record
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #cardListView>
+  <div class="card-list">
+    @for (emp of employees(); track emp.id) {
+      <app-data-card
+        class="card-list-item"
+        [employee]="emp"
+        (delete)="handleTableAction($event)"
+      ></app-data-card>
+    }
+  </div>
+</ng-template>

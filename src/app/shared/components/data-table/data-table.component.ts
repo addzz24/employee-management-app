@@ -1,10 +1,4 @@
-import {
-  Component,
-  ViewChild,
-  input,
-  output,
-  OnChanges,
-} from '@angular/core';
+import { Component, ViewChild, input, output, OnChanges, inject } from '@angular/core';
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
@@ -16,6 +10,7 @@ import { TableAction, TableActionEvent } from '../../../core/types/types';
 import { TitleCaseSplitPipe } from '../../../core/pipes/title-case-split.pipe';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-data-table',
@@ -29,12 +24,12 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTooltipModule,
     MatProgressSpinner,
     MatChipsModule,
-    TitleCaseSplitPipe
-],
+    TitleCaseSplitPipe,
+  ],
   templateUrl: './data-table.component.html',
-  styleUrl: './data-table.component.scss'
+  styleUrl: './data-table.component.scss',
 })
-export class DataTableComponent implements OnChanges{
+export class DataTableComponent implements OnChanges {
   dataSource = input.required<MatTableDataSource<any>>();
   visibleColumns = input<string[]>([]);
   tableActions = input<TableAction[]>([]);
@@ -42,6 +37,7 @@ export class DataTableComponent implements OnChanges{
   tableActionEmitter = output<TableActionEvent>();
 
   @ViewChild(MatSort) sort!: MatSort;
+  router = inject(Router);
 
   ngOnChanges() {
     const ds = this.dataSource();
@@ -52,5 +48,9 @@ export class DataTableComponent implements OnChanges{
 
   emitTableAction(action: string, row: any) {
     this.tableActionEmitter.emit({ action, data: row });
+  }
+
+  onAddItemClick() {
+    this.router.navigate(['/add-employee']);
   }
 }

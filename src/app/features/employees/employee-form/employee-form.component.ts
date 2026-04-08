@@ -31,6 +31,8 @@ import {
   EMPLOYMENT_TYPES,
 } from '../../../shared/constants/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltip } from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-employee-form',
@@ -43,7 +45,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatIconModule,
     MatSelectModule,
-  ],
+    MatButtonModule,
+    MatTooltip
+],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss',
   standalone: true,

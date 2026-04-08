@@ -19,6 +19,9 @@ import { EditEmployeeDialogComponent } from '../edit-employee-dialog/edit-employ
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -31,6 +34,8 @@ import { ConfirmationDialogComponent } from '../../../shared/components/confirma
     MatChipsModule,
     TableToolbarComponent,
     DataCardComponent,
+    CommonModule,
+    MatButtonModule
   ],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
@@ -60,6 +65,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   private dialog = inject(MatDialog);
   private snackBar = inject(MatSnackBar);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.loadEmployees();
@@ -194,5 +200,9 @@ export class EmployeeDetailsComponent implements OnInit {
         this.snackBar.open('Failed to delete employee', 'Close');
       },
     });
+  }
+
+  onAddItemClick() {
+    this.router.navigate(['/add-employee']);
   }
 }

@@ -76,6 +76,10 @@
       text-decoration: underline;
     }
   }
+
+  &.card-disabled{
+    background: $bg-disabled !important;
+  }
 }
 
 .front {

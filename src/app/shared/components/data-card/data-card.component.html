@@ -1,6 +1,6 @@
 <div class="card" [class.flipped]="isFlipped()">
   <!-- FRONT -->
-  <div class="card-face front">
+  <div class="card-face front" [class.card-disabled]="employee().status == 'Inactive'">
     <div class="employee-info">
       <h3>{{ employee().name }}</h3>
       <p>{{ employee().designation }}</p>
@@ -18,7 +18,7 @@
   </div>
 
   <!-- BACK -->
-  <div class="card-face back">
+  <div class="card-face back" [class.card-disabled]="employee().status == 'Inactive'">
     <div class="employee-info">
       <p><strong>DOB:</strong> {{ employee().dob }}</p>
       <p><strong>Joining:</strong> {{ employee().joiningDate }}</p>
