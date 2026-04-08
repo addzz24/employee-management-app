@@ -16,7 +16,7 @@ server.use((req, res, next) => {
 server.get('/employees', (req, res) => {
   let data = router.db.get('employees').value();
 
-  const {
+  let {
     page = 1,
     limit = 5,
     search = '',
@@ -24,6 +24,16 @@ server.get('/employees', (req, res) => {
     status,
     designation
   } = req.query;
+
+  // Ensure limit is treated as a number and capped at 1000
+  let limitNum = Number(limit);
+  if (isNaN(limitNum) || limitNum <= 0) {
+    limitNum = 5;
+  } else if (limitNum > 1000) {
+    limitNum = 1000;
+  }
+
+  const pageNum = Number(page) || 1;
 
   let result = [...data];
 
@@ -47,11 +57,11 @@ server.get('/employees', (req, res) => {
     result = result.filter(emp => emp.designation === designation);
   }
 
-  const pageNum = Number(page);
-  const limitNum = Number(limit);
-
+  // Calculate pagination window
   const start = (pageNum - 1) * limitNum;
   const end = start + limitNum;
+
+  console.log(`Fetching page ${pageNum} with limit ${limitNum}. Total filtered: ${result.length}`);
 
   res.json({
     total: result.length,
