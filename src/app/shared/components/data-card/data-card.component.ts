@@ -13,7 +13,7 @@ import { MatTooltip } from "@angular/material/tooltip";
 })
 export class DataCardComponent {
   employee = input.required<Employee>();
-  delete = output<number>();
+  delete = output<any>();
 
   isFlipped = signal(false);
 
@@ -22,6 +22,6 @@ export class DataCardComponent {
   }
 
   onDelete() {
-    this.delete.emit(this.employee().id);
+    this.delete.emit({ action: 'Delete', data: this.employee() });
   }
 }

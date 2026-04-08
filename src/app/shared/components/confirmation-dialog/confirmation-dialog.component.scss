@@ -1,0 +1,21 @@
+@use '../../../styles/variables' as *;
+
+.dialog-container {
+  .btn-primary {
+    background-color: $primary !important;
+  }
+  .dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .dialog-content {
+    min-width: 200px;
+    max-width: 40vw;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+}

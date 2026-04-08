@@ -1,0 +1,18 @@
+<div class="dialog-container">
+  <div mat-dialog-title class="dialog-header">
+    <div>
+      <h3>{{ data.title }}</h3>
+    </div>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <app-employee-form
+      [isEditMode]="true"
+      [data]="rowData"
+      (formSubmit)="handleFormSubmit($event)"
+    ></app-employee-form>
+  </mat-dialog-content>
+</div>

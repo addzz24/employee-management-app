@@ -27,6 +27,8 @@ export const DESIGNATIONS = [
   'HR Manager',
   'Senior DevOps Engineer',
   'Junior HR Specialist',
+  'SDE2',
+  'SDE1'
 ];
 
 export const EMPLOYEE_TABLE_ACTIONS = [

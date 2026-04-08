@@ -1,0 +1,19 @@
+<div class="dialog-container">
+  <div mat-dialog-title class="dialog-header">
+    <h3>{{ data.title }}</h3>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content class="dialog-content">
+    <h4>{{ data.message }}</h4>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button matButton="filled" class="btn-primary" (click)="handleConfirm()">
+      Delete
+    </button>
+  </mat-dialog-actions>
+</div>

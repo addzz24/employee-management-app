@@ -1,4 +1,13 @@
-import { Component, inject, input, OnInit, Inject, viewChild, output } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  output,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  input,
+} from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -21,6 +30,7 @@ import {
   STATUSES,
   EMPLOYMENT_TYPES,
 } from '../../../shared/constants/constants';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employee-form',
@@ -45,17 +55,19 @@ export class EmployeeFormComponent implements OnInit {
   employmentTypes = EMPLOYMENT_TYPES;
   employeeForm!: EmployeeForm;
 
-  isEditMode = input<boolean>(false);
-  data: any = input<Employee | null>(null);
+  isEditMode = input(false);
+  data = input<Employee | null>();
   formSubmit = output<Employee>();
 
-  fb = inject(FormBuilder);
+  private fb = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.initForm();
 
-    if (this.data && this.isEditMode()) {
-      this.patchForm(this.data);
+    const emp = this.data();
+    if (emp && this.isEditMode()) {
+      this.patchForm(emp);
     }
   }
 
@@ -127,11 +139,15 @@ export class EmployeeFormComponent implements OnInit {
   onSubmit() {
     if (this.employeeForm.invalid) {
       this.employeeForm.markAllAsTouched();
+      this.snackBar.open('Please fill all required fields', 'Close', {
+        duration: 6000,
+      });
       return;
     }
     this.formSubmit.emit(this.employeeForm.getRawValue());
     this.employeeForm.reset();
   }
+
   get getFormControls() {
     return this.employeeForm.controls;
   }

@@ -288,7 +288,8 @@
 </form>
 
 <div class="form-actions">
-  <button class="btn-primary" (click)="onSubmit()">Submit</button>
+  <button class="btn-primary" [class.btn-disabled]="employeeForm.invalid"
+     (click)="onSubmit()" [disabled]="employeeForm.invalid" >Submit</button>
 </div>
 
 <ng-template #formError let-control let-label="label">

@@ -29,14 +29,14 @@
     <app-data-table
       [dataSource]="dataSource"
       [visibleColumns]="displayedColumns"
-      (tableAction)="handleTableAction($event)"
+      (tableActionEmitter)="handleTableAction($event)"
       [tableActions]="tableActions"
       [loading]="loading()"
     ></app-data-table>
   } @else {
     <div class="card-list">
       @for (emp of employees(); track emp.id) {
-        <app-data-card class="card-list-item" [employee]="emp" (delete)="handleDelete($event)"></app-data-card>
+        <app-data-card class="card-list-item" [employee]="emp" (delete)="handleTableAction($event)"></app-data-card>
       }
     </div>
   }

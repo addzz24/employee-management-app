@@ -41,3 +41,13 @@ export type TableFilterConfig = {
   type: 'select' | 'date' | 'text';
   options?: string[];
 }
+
+export type EditEmployeeDialogData = {
+  title: string;
+  editRowData: Employee,
+}
+
+export type CommonConfirmationData = {
+  title: string,
+  message: string,
+}

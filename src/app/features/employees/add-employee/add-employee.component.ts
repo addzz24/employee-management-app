@@ -32,14 +32,12 @@ export class AddEmployeeComponent {
         next: () => {
           this.snackBar.open('Employee added successfully', 'Close', {
             duration: 5000,
-            panelClass: ['success-snackbar']
           });
           this.router.navigate(['/employees']);
         },
         error: () => {
           this.snackBar.open('Failed to add employee', 'Close', {
             duration: 3000,
-            panelClass: ['error-snackbar']
           });
         }
       });

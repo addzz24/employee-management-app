@@ -15,6 +15,10 @@ import {
 } from '../../../shared/constants/constants';
 import { finalize } from 'rxjs';
 import { EmployeeService } from '../../../core/services/employee.service';
+import { EditEmployeeDialogComponent } from '../edit-employee-dialog/edit-employee-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ConfirmationDialogComponent } from '../../../shared/components/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -53,6 +57,9 @@ export class EmployeeDetailsComponent implements OnInit {
   endIndex = computed(() =>
     Math.min((this.currentPage() + 1) * this.pageSize(), this.totalEmployees()),
   );
+
+  private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.loadEmployees();
@@ -119,11 +126,73 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   handleTableAction(event: any) {
-    console.log('Table action:', event);
+    switch (event.action) {
+    case 'Edit':
+      this.handleEditDialog(event.data);
+      break;
+    case 'Delete':
+      this.handleDelete(event.data);
+      break;
+  }
   }
 
-  handleDelete(employeeId: number) {
-    // Usually you'd call a delete API here, then reload
-    console.log('Delete employee:', employeeId);
+  handleDelete(employee: Employee) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: 'auto',
+      minWidth: '40vw',
+      panelClass: 'custom-dialog-container',
+      data: {
+        title: 'Delete Confirmation',
+        message: `Are you sure want to delete employee ${employee.name} (${employee.designation})`
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result.isConfirmed) {
+        this.deleteEmployee(employee);
+      }
+    });
+  }
+
+  handleEditDialog(employee: Employee) {
+    const dialogRef = this.dialog.open(EditEmployeeDialogComponent, {
+      width: 'auto',
+      minWidth: '80vw',
+      panelClass: 'custom-dialog-container',
+      data: {
+        title: 'Edit Employee',
+        editRowData: employee,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.updateEmployee(result);
+      }
+    });
+  }
+
+  updateEmployee(updatedEmployee: Employee) {
+    this.employeeService.updateEmployee(updatedEmployee.id, updatedEmployee).subscribe({
+      next: (response) => {
+        this.snackBar.open('Employee updated successfully!', 'Close', { duration: 6000 });
+        this.loadEmployees();
+      },
+      error: (err) => {
+        this.snackBar.open('Failed to update employee', 'Close', { duration: 6000 });
+      },
+    });
+  }
+
+  deleteEmployee(employee: Employee){
+    this.employeeService.deleteEmployee(employee.id).subscribe({
+        next: (response) => {
+          this.snackBar.open('Employee deleted successfully!', 'Close', { duration: 6000 });
+          this.loadEmployees();
+        },
+        error: (err) => {
+          this.snackBar.open('Failed to delete employee', 'Close');
+        }
+      });
   }
 }
