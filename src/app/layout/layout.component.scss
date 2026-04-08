@@ -1,10 +1,12 @@
+@use '../styles/variables' as *;
+
 .layout {
   display: flex;
-  height: calc(100vh - 64px); // minus header
+  height: calc(100vh - $height-header); // minus header
 }
 
 .content {
   flex: 1;
-  padding: 24px;
+  padding: $space-24;
   overflow-y: auto;
 }

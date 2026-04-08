@@ -14,7 +14,7 @@
   border-radius: 999px;
   font-weight: 600;
   min-width: 70px;
-  border: 0.5px solid transparent;
+  border: $space-1 solid transparent;
 }
 
 .status-active {
@@ -24,8 +24,8 @@
 
   &::before {
     content: '●';
-    margin-right: 4px;
-    font-size: 8px;
+    margin-right: $space-4;
+    font-size: $space-8;
     color: $text-success-300;
   }
 }
@@ -37,8 +37,8 @@
 
   &::before {
     content: '●';
-    margin-right: 4px;
-    font-size: 8px;
+    margin-right: $space-4;
+    font-size: $space-8;
     color: $text-danger-300;
   }
 }

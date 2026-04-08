@@ -1,41 +1,41 @@
 @use '../../../styles/variables' as *;
 
 .btn {
-  font-size: 1rem;
-  color: #ffffff;
+  font-size: $rem-1;
+  color: $text-white;
   background-color: $primary;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
+  border-radius: $radius;
+  border: $space-1 solid $border-color;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
+  padding: $space-6;
 }
 
 .toolbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: $rem-1;
   background-color: $bg-card;
-  border: 1px solid $border-color;
+  border: $space-1 solid $border-color;
   border-radius: $radius;
-  margin-bottom: 8px;
-  height: 40px;
+  margin-bottom: $space-8;
+  height: $height-base;
 
   .filter-buttons {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
+    gap: $rem-0-5;
+    padding: $rem-0-5 $rem-1;
   }
 }
 
 /* PANEL LAYOUT */
 .filter-panel {
   width: 284px;
-  padding: 16px;
+  padding: $space-16;
 
   display: flex;
   flex-direction: column;
@@ -46,12 +46,12 @@
 .filter-item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: $space-6;
 }
 
 /* LABEL */
 .filter-label {
-  font-size: 12px;
+  font-size: $font-size-xs;
   font-weight: 600;
   color: $text-secondary;
 }
@@ -60,12 +60,12 @@
 .filter-actions {
   display: flex;
   justify-content: space-between;
-  margin-top: 8px;
+  margin-top: $space-8;
   align-items: center;
 
   .btn {
-    width: 5rem;
-    height: 2rem;
+    width: $rem-5;
+    height: $rem-2;
   }
 }
 

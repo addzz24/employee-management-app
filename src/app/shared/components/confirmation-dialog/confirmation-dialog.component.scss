@@ -8,13 +8,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 $space-20;
   }
 
   .dialog-content {
-    min-width: 200px;
-    max-width: 40vw;
-    padding: 20px;
+    min-width: $min-width-dialog;
+    max-width: $max-width-dialog;
+    padding: $space-20;
     display: flex;
     justify-content: center;
   }

@@ -3,7 +3,7 @@
 .emp-form-group {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: $space-20;
 
   .accordion-container .mat-expansion-panel-header-description {
     justify-content: end;
@@ -14,55 +14,55 @@
 .form-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 1rem;
+  gap: $space-16;
+  margin-top: $rem-1;
 }
 
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  gap: $space-16;
 }
 
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: $space-16;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: $space-6;
 
   label {
-    font-size: 13px;
+    font-size: $font-size-sm;
     color: #6b7280;
     font-weight: 500;
   }
 
   .error {
-    font-size: 13px;
+    font-size: $font-size-sm;
     color: $text-danger-200;
     font-weight: 500;
   }
 }
 
 .address-card {
-  border: 1px solid $border-color;
-  border-radius: 10px;
-  padding: 12px;
+  border: $space-1 solid $border-color;
+  border-radius: $radius;
+  padding: $space-12;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: $space-10;
 }
 
 .btn-primary {
   background: $primary;
   color: white;
   border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
+  padding: $space-10 $space-16;
+  border-radius: $space-8;
   cursor: pointer;
 
   &:hover {
@@ -82,29 +82,29 @@
 
 .btn-add {
   background: $primary;
-  border: 1px solid $border-color;
-  padding: 6px 10px;
-  border-radius: 6px;
+  border: $space-1 solid $border-color;
+  padding: $space-6 $space-10;
+  border-radius: $space-6;
   cursor: pointer;
   color: $text-white;
-  width: 5rem;
+  width: $rem-5;
 }
 
 .btn-remove {
   align-self: flex-end;
   background: #fee2e2;
   border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: $space-6 $space-10;
+  border-radius: $space-6;
   color: #b91c1c;
   cursor: pointer;
-  width: 5rem;
+  width: $rem-5;
 }
 
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: $space-16;
 }
 
 @media (max-width: 768px) {
@@ -120,20 +120,20 @@
 :host {
   ::ng-deep .mat-expansion-panel {
     box-shadow: none !important;
-    border: 1px solid $border-color;
+    border: $space-1 solid $border-color;
     border-radius: $radius;
     background: $bg-card;
   }
 
   ::ng-deep .mat-expansion-panel-header {
     background: $bg-card;
-    border-bottom: 1px solid $border-color;
+    border-bottom: $space-1 solid $border-color;
   }
 
   ::ng-deep .mat-mdc-text-field-wrapper {
-    height: 40px !important;
+    height: $height-base !important;
     display: flex;
     align-items: center;
-    padding: 0 12px !important;
+    padding: 0 $space-12 !important;
   }
 }

@@ -3,8 +3,8 @@
 /* Mat Card */
 .mat-mdc-card {
   border-radius: $radius !important;
-  border: 1px solid $border-color;
-  padding: 16px;
+  border: $space-1 solid $border-color;
+  padding: $space-16;
   background: $bg-card !important;
 }
 
@@ -13,20 +13,20 @@
   background: $bg-card !important;
   border-radius: $radius;
   overflow: hidden;
-  border: 1px solid $border-color !important;
+  border: $space-1 solid $border-color !important;
 }
 
 .mat-mdc-table .mat-mdc-button {
-  min-width: 36px !important;
-  width: 36px;
-  height: 36px;
+  min-width: $width-icon !important;
+  width: $width-icon;
+  height: $height-sm;
   padding: 0 !important;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 8px;
+  border-radius: $space-8;
 
   &:hover {
     background: $primary-light !important;
@@ -43,37 +43,37 @@
 }
 
 .mat-mdc-paginator-outer-container {
-  border: 1px solid $border-color;
+  border: $space-1 solid $border-color;
   border-radius: $radius;
-  margin-top: 10px;
+  margin-top: $space-10;
   background-color: $bg-card !important;
 }
 
 .mat-mdc-header-cell {
-  font-size: 14px;
+  font-size: $font-size-base;
   color: $text-primary;
   font-weight: 800 !important;
 }
 
 /* Table Rows */
 .mat-mdc-row {
-  font-size: 12px !important;
+  font-size: $font-size-xs !important;
   &:hover {
     background: $bg-hover;
   }
 }
 
 .mat-mdc-cell {
-  padding: 16px;
+  padding: $space-16;
   color: $text-secondary;
-  height: 4rem !important;
+  height: $rem-4 !important;
 }
 
 /* To Remove bottom border from table body rows */
 .mat-mdc-table {
   .mat-mdc-cell,
   .mat-mdc-header-cell {
-    border-bottom: 1px solid $border-color;
+    border-bottom: $space-1 solid $border-color;
     font-weight: bolder;
   }
   .mat-mdc-row:last-child .mat-mdc-cell {
@@ -85,18 +85,18 @@
 
 .search-wrapper {
   .mat-mdc-form-field {
-    width: 220px;
+    width: $width-search;
   }
 
   .mat-mdc-text-field-wrapper {
-    height: 40px !important;
+    height: $height-base !important;
     display: flex;
     align-items: center;
-    padding: 0 12px !important;
+    padding: 0 $space-12 !important;
   }
 
   .mat-mdc-input-element {
-    font-size: 14px;
+    font-size: $font-size-base;
     padding: 0 !important;
     height: auto !important;
   }
@@ -108,7 +108,7 @@
 }
 
 .mat-mdc-input-element::placeholder {
-  font-size: 14px !important;
+  font-size: $font-size-base !important;
 }
 
 .custom-select-height {
@@ -122,17 +122,17 @@
 
   .mat-mdc-text-field-wrapper {
     background: $bg-card !important;
-    border: 1px solid $border-color !important;
+    border: $space-1 solid $border-color !important;
     border-radius: $radius !important;
 
     display: flex;
     align-items: center;
 
-    padding: 0 12px !important;
-    height: 40px !important;
+    padding: 0 $space-12 !important;
+    height: $height-base !important;
   }
 
   .mat-mdc-select-placeholder {
-    font-size: 14px !important;
+    font-size: $font-size-base !important;
   }
 }

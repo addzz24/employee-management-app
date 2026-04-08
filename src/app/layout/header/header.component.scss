@@ -1,13 +1,13 @@
 @use '../../styles/variables' as *;
 
 .header {
-  height: 64px;
+  height: $height-header;
   background: white;
-  border-bottom: 1px solid $border-color;
+  border-bottom: $space-1 solid $border-color;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 $space-24;
 
   .left {
     display: flex;
@@ -25,17 +25,17 @@
 
 .logo {
   font-weight: 700;
-  font-size: 18px;
+  font-size: $font-size-xl;
 }
 
 nav {
-  margin-left: 24px;
+  margin-left: $space-24;
 
   a {
-    margin-right: 12px;
+    margin-right: $space-12;
     text-decoration: none;
     color: $text-secondary;
-    padding: 6px 12px;
+    padding: $space-6 $space-12;
     border-radius: $radius;
 
     &.active {
@@ -48,7 +48,7 @@ nav {
 .user {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: $space-10;
 
   img {
     border-radius: 50%;
@@ -59,7 +59,7 @@ nav {
   }
 
   .role {
-    font-size: 12px;
+    font-size: $font-size-xs;
     color: $text-secondary;
   }
 }

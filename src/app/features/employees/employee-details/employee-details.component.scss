@@ -11,7 +11,7 @@
   .heading {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: $space-8;
   }
 
   .heading > * {
@@ -21,7 +21,7 @@
   .custom-toggle {
     position: relative;
     width: 68px;
-    height: 36px;
+    height: $height-sm;
 
     input {
       display: none;
@@ -32,14 +32,14 @@
       inset: 0;
       cursor: pointer;
       background: #e5e7eb;
-      border-radius: 10px;
+      border-radius: $radius;
       transition: background 0.3s ease;
 
       display: flex;
       align-items: center;
 
       /* IMPORTANT: reserve space for knob */
-      padding: 0 8px;
+      padding: 0 $space-8;
     }
 
     /* ICON CONTAINER */
@@ -52,7 +52,7 @@
     }
 
     .icon {
-      font-size: 16px;
+      font-size: $font-size-lg;
       transition: all 0.3s ease;
       opacity: 0.5;
       color: #6b7280;
@@ -78,11 +78,11 @@
       width: 26px;
       height: 28px;
       background: white;
-      border-radius: 8px;
-      top: 4px;
-      left: 4px;
+      border-radius: $space-8;
+      top: $space-4;
+      left: $space-4;
       transition: transform 0.3s ease;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 $space-2 6px rgba(0, 0, 0, 0.15);
       z-index: 1;
     }
 
@@ -114,8 +114,8 @@
   overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  gap: $space-20;
+  padding: $space-20;
   align-content: start;
 
   .card-list-item {

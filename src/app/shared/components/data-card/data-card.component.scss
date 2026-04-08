@@ -11,9 +11,9 @@
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
-  padding: 16px;
+  padding: $space-16;
   background: $bg-card;
-  border: 1px solid $border-color;
+  border: $space-1 solid $border-color;
   border-radius: 12px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -30,7 +30,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    gap: 6px;
+    gap: $space-6;
   }
 
   .actions {
@@ -52,13 +52,13 @@
 
   h3 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: $rem-1-1;
     color: $primary;
   }
 
   p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: $rem-0-9;
     color: $text-primary;
   }
 
@@ -68,7 +68,7 @@
   }
 
   &:hover {
-    transform: translateY(-8px);
+    transform: translateY(-$space-8);
     border-color: $primary;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 

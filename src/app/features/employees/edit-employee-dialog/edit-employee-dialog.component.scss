@@ -1,11 +1,13 @@
+@use '../../../../app/styles/variables' as *;
+
 .dialog-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 $space-20;
 }
 .dialog-content {
-  min-width: 400px;
-  max-width: 90vw;
-  padding: 20px;
+  min-width: $min-width-form;
+  max-width: $max-width-form;
+  padding: $space-20;
 }
