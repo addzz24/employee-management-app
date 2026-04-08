@@ -30,13 +30,24 @@ $text-warning-200: #fbbf24;
 $text-warning-300: #f59e0b;
 $text-warning-400: #d97706;
 
-
-
 $border-color: #e5e7eb;
 
 $success: #10b981;
 $error: #ef4444;
 $warning: #f59e0b;
+
+// Dashboard specific colors
+$bg-dashboard: #f8fafc;
+$bg-kpi-blue: #eff6ff;
+$color-kpi-blue: #3b82f6;
+$bg-kpi-green: #ecfdf5;
+$color-kpi-green: #10b981;
+$bg-kpi-purple: #f5f3ff;
+$color-kpi-purple: #8b5cf6;
+$color-kpi-label: #64748b;
+$color-kpi-value: #1e293b;
+$bg-kpi-trend: #f0fdf4;
+$color-kpi-trend: #166534;
 
 // Spacing (px)
 $space-1: 1px;
@@ -57,6 +68,7 @@ $font-size-sm: 13px;
 $font-size-base: 14px;
 $font-size-lg: 16px;
 $font-size-xl: 18px;
+$font-size-2xl: 28px;
 
 // Dimensions (px)
 $height-sm: 36px;

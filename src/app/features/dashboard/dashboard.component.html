@@ -1,1 +1,56 @@
-<p>dashboard works!</p>
+<div class="dashboard-wrapper">
+  <section class="kpi-container">
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <mat-icon class="kpi-icon icon-blue">people</mat-icon>
+        <span class="kpi-label">Active Employees</span>
+      </div>
+      <div class="kpi-content">
+        <h2 class="kpi-value">{{ store.activeCount() }}</h2>
+        <span class="kpi-trend trend-up">+2.86%</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <mat-icon class="kpi-icon icon-green">payments</mat-icon>
+        <span class="kpi-label">Total Payroll</span>
+      </div>
+      <div class="kpi-content">
+        <h2 class="kpi-value">₹{{ store.totalPayroll() | number }}</h2>
+        <span class="kpi-trend trend-up">+54.05%</span>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <mat-icon class="kpi-icon icon-purple">work_history</mat-icon>
+        <span class="kpi-label">Avg Experience</span>
+      </div>
+      <div class="kpi-content">
+        <h2 class="kpi-value">{{ store.avgExperience() }} Yrs</h2>
+        <span class="kpi-trend trend-up">+51.43%</span>
+      </div>
+    </mat-card>
+  </section>
+
+  <section class="analytics-row">
+    <mat-card class="chart-card large">
+      <mat-card-header>
+        <mat-card-title>Employees by Department</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-bar-chart [data]="barChartData()" (categoryClick)="onBarChartCategoryClick($event)"></app-bar-chart>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="chart-card small">
+      <mat-card-header>
+        <mat-card-title>Employment Type Distribution</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-pie-chart [data]="pieChartData()" (statusClick)="onPieChartStatusClick($event)"></app-pie-chart>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

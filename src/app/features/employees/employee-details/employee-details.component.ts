@@ -22,6 +22,7 @@ import { ConfirmationDialogComponent } from '../../../shared/components/confirma
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { GlobalStore } from '../../../store/global/global.store';
 
 @Component({
   selector: 'app-employee-list',
@@ -42,6 +43,7 @@ import { Router } from '@angular/router';
 })
 export class EmployeeDetailsComponent implements OnInit {
   private employeeService = inject(EmployeeService);
+  readonly store = inject(GlobalStore);
 
   employees = signal<Employee[]>([]);
   totalEmployees = signal(0);
@@ -87,6 +89,7 @@ export class EmployeeDetailsComponent implements OnInit {
           this.employees.set(res.data);
           this.totalEmployees.set(res.total);
           this.dataSource = new MatTableDataSource(res.data);
+          this.store.setEmployees(res.data);
         },
         error: () => console.error('Failed to fetch employees'),
       });

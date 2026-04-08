@@ -51,3 +51,18 @@ export type CommonConfirmationData = {
   title: string,
   message: string,
 }
+
+export type LineChartData = {
+  date: string;
+  amount: number;
+};
+
+export type PieChartData = {
+  status: string;
+  amount: number;
+};
+
+export type BarChartData = {
+  category: string,
+  amount: number
+}
