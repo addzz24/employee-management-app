@@ -42,6 +42,25 @@
     @if (!loading()) {
       <tr mat-row *matRowDef="let row; columns: visibleColumns()"></tr>
     }
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="visibleColumns().length">
+        @if (!loading()) {
+          <div class="empty-state-wrapper">
+            <div class="empty-content">
+              <mat-icon class="empty-icon">group_off</mat-icon>
+              <h3>No Data Found</h3>
+              <p>It looks like there are no records in the system yet.</p>
+
+              <button mat-flat-button color="primary" class="mt-4">
+                <mat-icon>add</mat-icon>
+                Add Your Record
+              </button>
+            </div>
+          </div>
+        }
+      </td>
+    </tr>
   </table>
 
   @if (loading()) {
