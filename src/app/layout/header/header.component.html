@@ -1,11 +1,26 @@
 <header class="header">
   <div class="left">
-    <img src="assets/logo.svg" alt="Logo" />
+    <mat-icon>diversity_2</mat-icon>
     <span class="logo">EmpManage</span>
     <nav>
-      <a class="nav-item" [class.selected]="currentRoute() === '/dashboard'" (click)="onNavItemClick('dashboard')">Dashboard</a>
-      <a class="nav-item" [class.selected]="currentRoute() === '/employees'" (click)="onNavItemClick('employees')">Employee List</a>
-      <a class="nav-item" [class.selected]="currentRoute() === '/add-employee'" (click)="onNavItemClick('add-employee')">Add Employee</a>
+      <a
+        class="nav-item"
+        [class.selected]="currentRoute() === '/dashboard'"
+        (click)="onNavItemClick('dashboard')"
+        >Dashboard</a
+      >
+      <a
+        class="nav-item"
+        [class.selected]="currentRoute() === '/employees'"
+        (click)="onNavItemClick('employees')"
+        >Employee List</a
+      >
+      <a
+        class="nav-item"
+        [class.selected]="currentRoute() === '/add-employee'"
+        (click)="onNavItemClick('add-employee')"
+        >Add Employee</a
+      >
     </nav>
   </div>
 

@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [MatIcon],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

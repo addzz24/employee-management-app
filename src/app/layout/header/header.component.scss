@@ -13,18 +13,20 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    gap: $rem-1;
+    gap: $space-6;
 
-    img {
-      width: 42px;
-      height: 42px;
+    mat-icon {
+      font-size: $font--size-xxl;
+      color: $primary;
     }
 
     nav {
       display: flex;
       flex-direction: row;
       margin-left: $rem-2;
-      gap: 10px;
+      gap: $space-10;
+      font-weight: 700;
+
       cursor: pointer !important;
       .nav-item {
         &:hover {
