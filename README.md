@@ -1,5 +1,12 @@
 # Employee Management App
 
+## Live Demo
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/~/github.com/addzz24/employee-management-app)
+
+- Follow backend installation steps in stackblitz
+
+
 ## Description
 
 Employee Management App is an Angular v21 administrative interface for managing employee records and company analytics. It includes reactive forms, editable employee details, summary dashboards, charts, and a API integrations with backend powered by `json-server`.
