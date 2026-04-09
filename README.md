@@ -127,6 +127,11 @@ src
 - `layout/`: shell components and top-level layout controls like header and app scaffolding
 - `store/`: centralized global state management and shared application stores
 
+## Local Build 
+
+![Running Console Output](public/assets/build-1.png)
+
+![Successful Build](public/assets/build-2.png)
 
 ## User Interface Preview
 
