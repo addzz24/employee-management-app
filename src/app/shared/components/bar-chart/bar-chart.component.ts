@@ -102,7 +102,6 @@ export class BarChartComponent {
         d3.select(event.currentTarget).attr('fill', '#3b82f6');
       })
 
-    // Add value labels on top of bars
     svg
       .selectAll('.label')
       .data(this.data)

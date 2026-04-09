@@ -2,7 +2,7 @@
 
 .layout {
   display: flex;
-  height: calc(100vh - $height-header); // minus header
+  height: calc(100vh - $height-header);
 }
 
 .content {

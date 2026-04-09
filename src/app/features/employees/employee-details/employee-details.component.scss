@@ -34,15 +34,11 @@
       background: #e5e7eb;
       border-radius: $radius;
       transition: background 0.3s ease;
-
       display: flex;
       align-items: center;
-
-      /* IMPORTANT: reserve space for knob */
       padding: 0 $space-8;
     }
 
-    /* ICON CONTAINER */
     .icons {
       display: flex;
       justify-content: space-between;
@@ -71,7 +67,6 @@
       justify-content: end;
     }
 
-    /* KNOB */
     label::after {
       content: '';
       position: absolute;
@@ -86,7 +81,6 @@
       z-index: 1;
     }
 
-    /* ON STATE */
     input:checked + label::after {
       transform: translateX(34px);
     }

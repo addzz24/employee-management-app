@@ -15,15 +15,15 @@
   background: $bg-card;
   border: $space-1 solid $border-color;
   border-radius: 12px;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  cursor: pointer;
+
   transition:
-    transform 0.4s ease,
+    transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
     box-shadow 0.4s ease,
     border-color 0.4s ease;
-  cursor: pointer;
 
   .employee-info {
     display: flex;
@@ -67,8 +67,16 @@
     width: fit-content;
   }
 
+  &.card-disabled {
+    background: $bg-disabled !important;
+  }
+}
+
+.front {
+  transform: rotateY(0deg);
+
   &:hover {
-    transform: translateY(-$space-8);
+    transform: rotateY(0deg) translateY(-$space-8);
     border-color: $primary;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 
@@ -76,24 +84,31 @@
       text-decoration: underline;
     }
   }
-
-  &.card-disabled{
-    background: $bg-disabled !important;
-  }
-}
-
-.front {
-  transform: rotateY(0);
 }
 
 .back {
   transform: rotateY(180deg);
+
+  &:hover {
+    transform: rotateY(180deg) translateY(-$space-8);
+    border-color: $primary;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
 }
 
-.card.flipped .front {
-  transform: rotateY(180deg);
-}
+.card.flipped {
+  .front {
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
 
-.card.flipped .back {
-  transform: rotateY(360deg);
+  .back {
+    transform: rotateY(360deg);
+
+    &:hover {
+      transform: rotateY(360deg) translateY(-$space-8);
+      border-color: $primary;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+  }
 }

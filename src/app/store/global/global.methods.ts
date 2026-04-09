@@ -7,10 +7,8 @@ export const globalMethods = (store: any) => ({
    * Sync API data to Store and LocalStorage
    */
   setEmployees(data: Employee[]) {
-    // 1. Update the SignalStore state
     patchState(store, { employees: data });
 
-    // 2. Persist to LocalStorage
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   },
 

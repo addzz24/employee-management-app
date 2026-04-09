@@ -32,7 +32,6 @@
   }
 }
 
-/* PANEL LAYOUT */
 .filter-panel {
   width: 284px;
   padding: $space-16;
@@ -42,21 +41,18 @@
   gap: 14px;
 }
 
-/* EACH FIELD */
 .filter-item {
   display: flex;
   flex-direction: column;
   gap: $space-6;
 }
 
-/* LABEL */
 .filter-label {
   font-size: $font-size-xs;
   font-weight: 600;
   color: $text-secondary;
 }
 
-/* ACTION BUTTONS */
 .filter-actions {
   display: flex;
   justify-content: space-between;
