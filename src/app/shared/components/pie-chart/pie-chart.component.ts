@@ -1,13 +1,14 @@
-import { Component, effect, ElementRef, input, output, ViewChild } from '@angular/core';
+import { Component, effect, ElementRef, input, output, signal, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import * as d3 from 'd3';
 import { PieChartData } from '../../../core/types/types';
 
 @Component({
   selector: 'app-pie-chart',
-  imports: [],
+  imports: [CommonModule],
   standalone: true,
   templateUrl: './pie-chart.component.html',
-  styleUrl: './pie-chart.component.css',
+  styleUrl: './pie-chart.component.scss',
 })
 export class PieChartComponent {
   data = input<PieChartData[]>([]);
@@ -17,9 +18,10 @@ export class PieChartComponent {
 
   constructor() {
     effect(() => {
-      if (this.data() && this.data().length > 0) {
-        this.renderChart();
+      if (!this.data() || this.data().length === 0) {
+        return;
       }
+      this.renderChart();
     });
   }
 
@@ -30,7 +32,7 @@ export class PieChartComponent {
     element.innerHTML = '';
 
     const width = element.clientWidth;
-    const height = 300;
+    const height = 320;
     const radius = Math.min(width, height) / 2.5;
 
     const svg = d3
@@ -43,17 +45,16 @@ export class PieChartComponent {
       .append('g')
       .attr('transform', `translate(${width / 2},${height / 2})`);
 
-    const pie = d3.pie<any>().value((d) => d.amount);
-
+    const pie = d3.pie<PieChartData>().value((d) => d.salary);
     const arc = d3.arc<any>().innerRadius(0).outerRadius(radius);
 
+    const domain = this.data().map((d) => d.department).sort((a, b) => a.localeCompare(b));
     const color = d3
-      .scaleOrdinal()
-      .domain(this.data()
-      .map((d) => d.status)
-      .sort((a, b)=> a.localeCompare(b))
-      )
-      .range(['#10b981', '#ef4444']);
+      .scaleOrdinal<string, string>()
+      .domain(domain)
+      .range(['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#14b8a6']);
+
+    d3.select(element).style('position', 'relative');
 
     const tooltip = d3
       .select(element)
@@ -65,7 +66,8 @@ export class PieChartComponent {
       .style('border-radius', '6px')
       .style('font-size', '12px')
       .style('pointer-events', 'none')
-      .style('opacity', 0);
+      .style('opacity', 0)
+      .style('white-space', 'nowrap');
 
     svg
       .selectAll('path')
@@ -73,32 +75,26 @@ export class PieChartComponent {
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d) => color(d.data.status) as string)
+      .attr('fill', (d) => color(d.data.department) as string)
       .style('cursor', 'pointer')
-
       .on('mouseover', (event: any, d: any) => {
-        tooltip.style('opacity', 1).html(`${d.data.status}: ${d.data.amount}`);
+        tooltip.style('opacity', 1).html(`${d.data.department}: ₹${d.data.salary}`);
       })
-
       .on('mousemove', (event: any) => {
-        tooltip.style('left', event.pageX + 10 + 'px').style('top', event.pageY - 50 + 'px');
+        const rect = element.getBoundingClientRect();
+        tooltip
+          .style('left', event.clientX - rect.left + 10 + 'px')
+          .style('top', event.clientY - rect.top - 40 + 'px');
       })
-
       .on('mouseleave', () => {
         tooltip.style('opacity', 0);
       })
 
-      .on('click', (event: any, d: any) => {
-        this.statusClick.emit(d.data.status);
-      });
-
-    // Add labels on the pie slices
     svg
       .selectAll('text')
       .data(pie(this.data()))
       .enter()
       .append('text')
-      .text((d) => `${d.data.status}: ${d.data.amount}`)
       .attr('transform', (d) => `translate(${arc.centroid(d)})`)
       .style('text-anchor', 'middle')
       .style('font-size', '12px')

@@ -7,7 +7,9 @@
       </div>
       <div class="kpi-content">
         <h2 class="kpi-value">{{ store.activeCount() }}</h2>
-        <span class="kpi-trend trend-up">+2.86%</span>
+        <span class="kpi-trend" [class]="'trend-' + (activeEmployeeTrend() >= 0 ? 'up' : 'down')">
+          {{ activeEmployeeTrend() >= 0 ? '+' : '' }}{{ activeEmployeeTrend() }}%
+        </span>
       </div>
     </mat-card>
 
@@ -18,7 +20,9 @@
       </div>
       <div class="kpi-content">
         <h2 class="kpi-value">₹{{ store.totalPayroll() | number }}</h2>
-        <span class="kpi-trend trend-up">+54.05%</span>
+        <span class="kpi-trend" [class]="isPayrollPositive() ? 'trend-up' : 'trend-down'">
+          {{ isPayrollPositive() ? '+' : '' }}{{ payrollTrend() }}%
+        </span>
       </div>
     </mat-card>
 
@@ -29,7 +33,9 @@
       </div>
       <div class="kpi-content">
         <h2 class="kpi-value">{{ store.avgExperience() }} Yrs</h2>
-        <span class="kpi-trend trend-up">+51.43%</span>
+        <span class="kpi-trend" [class]="isExperiencePositive() ? 'trend-up' : 'trend-down'">
+          {{ isExperiencePositive() ? '+' : '' }}{{ experienceTrend() }}%
+        </span>
       </div>
     </mat-card>
 
@@ -69,16 +75,21 @@
         <mat-card-title>Employment Type Distribution</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <mat-card-content>
-          @if (!isLoading()) {
-            <app-pie-chart
-              [data]="pieChartData()"
-              (statusClick)="onPieChartStatusClick($event)"
-            ></app-pie-chart>
-          } @else {
-            <ng-container *ngTemplateOutlet="chartLoader"></ng-container>
-          }
-        </mat-card-content>
+        @if (!isLoading()) {
+          <app-pie-chart
+            [data]="pieChartData()"
+            (statusClick)="onPieChartStatusClick($event)"
+          ></app-pie-chart>
+
+          <div class="pie-chart-card-legend">
+            <div class="legend-badge" *ngFor="let item of pieChartLegend()">
+              <span class="legend-swatch" [style.background]="item.color"></span>
+              <span class="legend-label">{{ item.department }}</span>
+            </div>
+          </div>
+        } @else {
+          <ng-container *ngTemplateOutlet="chartLoader"></ng-container>
+        }
       </mat-card-content>
     </mat-card>
   </section>

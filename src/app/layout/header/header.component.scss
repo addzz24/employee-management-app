@@ -16,7 +16,7 @@
     gap: $space-6;
 
     mat-icon {
-      font-size: $font--size-xxl;
+      font-size: $font-size-xxl;
       color: $primary;
     }
 
@@ -25,7 +25,8 @@
       flex-direction: row;
       margin-left: $rem-2;
       gap: $space-10;
-      font-weight: 700;
+      font-weight: 300;
+      font-size: $font-size-base;
 
       cursor: pointer !important;
       .nav-item {
@@ -50,10 +51,9 @@ nav {
   margin-left: $space-24;
 
   a {
-    margin-right: $space-12;
     text-decoration: none;
     color: $text-secondary;
-    padding: $space-6 $space-12;
+    padding: $space-6 $space-6;
     border-radius: $radius;
 
     &.active {

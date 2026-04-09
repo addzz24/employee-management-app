@@ -28,24 +28,22 @@ export class DashboardComponent implements OnInit {
   private employeeService = inject(EmployeeService);
   readonly isLoading = signal(false);
 
-  readonly totalRevenue = computed(() => {
-    return this.store.employees().reduce((sum, employee) => sum + (employee.bonus || 0), 0);
-  });
-
-  readonly totalCosts = computed(() => {
+  readonly totalSalary = computed(() => {
     return this.store.employees().reduce((sum, employee) => sum + (employee.salary || 0), 0);
   });
 
+  readonly totalBonus = computed(() => {
+    return this.store.employees().reduce((sum, employee) => sum + (employee.bonus || 0), 0);
+  });
+
   readonly netProfit = computed(() => {
-    return this.totalRevenue() - this.totalCosts() * 0.08;
+    return this.totalBonus() - this.totalSalary() * 0.08;
   });
 
   readonly profitTrend = computed(() => {
-    const revenue = this.totalRevenue();
-    const costs = this.totalCosts();
+    const costs = this.totalSalary();
     if (costs === 0) return 0;
-    const profitMargin = ((revenue - costs * 0.08) / costs) * 100;
-    return Math.round(profitMargin * 100) / 100;
+    return Math.round((this.netProfit() / costs) * 100 * 100) / 100;
   });
 
   readonly isProfitPositive = computed(() => this.profitTrend() >= 0);
@@ -69,17 +67,48 @@ export class DashboardComponent implements OnInit {
 
   barChartData = computed<BarChartData[]>(() => {
     return this.store.employeesByDeptChart().map((item) => ({
-      category: item.name,
-      amount: item.value,
+      employmentType: item.name,
+      salary: item.value,
     }));
   });
 
   pieChartData = computed<PieChartData[]>(() => {
     return this.store.employmentTypeChart().map((item) => ({
-      status: item.name,
-      amount: item.value,
+      department: item.name,
+      salary: item.value,
     }));
   });
+
+  pieChartLegend = computed(() => {
+    const colors = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#14b8a6'];
+    return [...this.pieChartData()]
+      .sort((a, b) => a.department.localeCompare(b.department))
+      .map((item, index) => ({
+        department: item.department,
+        color: colors[index % colors.length],
+      }));
+  });
+
+  activeEmployeeTrend = computed(() => {
+    const totalEmployees = this.store.employees().length;
+    return totalEmployees === 0
+      ? 0
+      : Math.round((this.store.activeCount() / totalEmployees) * 100 * 100) / 100;
+  });
+
+  payrollTrend = computed(() => {
+    const totalEmployees = this.store.employees().length;
+    return totalEmployees === 0
+      ? 0
+      : Math.round((this.store.totalPayroll() / totalEmployees / 10000) * 100) / 100;
+  });
+
+  experienceTrend = computed(() => {
+    return Math.round((this.store.avgExperience() / 10) * 100 * 100) / 100;
+  });
+
+  isPayrollPositive = computed(() => this.payrollTrend() >= 0);
+  isExperiencePositive = computed(() => this.experienceTrend() >= 0);
 
   onBarChartCategoryClick(category: string) {
     console.log('Bar chart category clicked:', category);

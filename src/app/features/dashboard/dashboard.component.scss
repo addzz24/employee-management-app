@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: $space-24;
   background-color: $bg-dashboard;
-  min-height: 100vh;
+  min-height: 80vh;
 
   .kpi-container {
     display: flex;
@@ -40,6 +40,37 @@
 
       mat-card-content {
         position: relative;
+
+        .pie-chart-card-legend {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: $space-12;
+          margin-top: $space-16;
+          padding: 0;
+        }
+
+        .legend-badge {
+          display: flex;
+          align-items: center;
+          gap: $space-8;
+          padding: $space-8 $space-10;
+          border-radius: $space-10;
+          background: #ffffff;
+          box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+          min-width: 68px;
+        }
+
+        .legend-swatch {
+          width: 10px;
+          height: 10px;
+          border-radius: 9999px;
+        }
+
+        .legend-label {
+          font-size: $font-size-sm;
+          color: $color-kpi-value;
+        }
       }
 
       .chart-loader {
@@ -87,7 +118,7 @@
     align-items: flex-end;
 
     .kpi-value {
-      font-size: $font-size-2xl;
+      font-size: $font-size-xxl;
       font-weight: 700;
       margin: 0;
       color: $color-kpi-value;

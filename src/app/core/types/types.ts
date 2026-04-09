@@ -58,11 +58,11 @@ export type LineChartData = {
 };
 
 export type PieChartData = {
-  status: string;
-  amount: number;
+  department: string;
+  salary: number;
 };
 
 export type BarChartData = {
-  category: string,
-  amount: number
+  employmentType: string,
+  salary: number
 }

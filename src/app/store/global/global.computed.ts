@@ -54,26 +54,26 @@ export const globalComputed = (state: any) => {
     ),
 
     /**
-     * BAR CHART: Employees by Department
+     * BAR CHART: Salary by Department
      */
     employeesByDeptChart: computed(() => {
       const map = new Map<string, number>();
 
       filteredEmployees().forEach((e: any) => {
-        map.set(e.department, (map.get(e.department) || 0) + 1);
+        map.set(e.department, (map.get(e.department) || 0) + (e.salary || 0));
       });
 
       return Array.from(map, ([name, value]) => ({ name, value }));
     }),
 
     /**
-     * PIE CHART: Employment Type Distribution
+     * PIE CHART: Salary by Employment Type
      */
     employmentTypeChart: computed(() => {
       const map = new Map<string, number>();
 
       filteredEmployees().forEach((e: any) => {
-        map.set(e.employmentType, (map.get(e.employmentType) || 0) + 1);
+        map.set(e.employmentType, (map.get(e.employmentType) || 0) + (e.salary || 0));
       });
 
       return Array.from(map, ([name, value]) => ({ name, value }));
