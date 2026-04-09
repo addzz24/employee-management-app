@@ -22,6 +22,7 @@ import { ConfirmationDialogComponent } from '../../../shared/components/confirma
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { MatProgressSpinner } from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-employee-list',
@@ -35,8 +36,9 @@ import { Router } from '@angular/router';
     TableToolbarComponent,
     DataCardComponent,
     CommonModule,
-    MatButtonModule
-  ],
+    MatButtonModule,
+    MatProgressSpinner
+],
   templateUrl: './employee-details.component.html',
   styleUrl: './employee-details.component.scss',
 })

@@ -14,8 +14,8 @@
     gap: $space-16;
 
     .kpi-card {
-      flex: 1 1 calc(33.333% - 16px);
-      min-width: 280px;
+      flex: 1 1 calc(25% - 12px);
+      min-width: 250px;
       padding: $space-16;
       border-radius: $space-12;
     }
@@ -100,6 +100,11 @@
       border-radius: $space-12;
       background: $bg-kpi-trend;
       color: $color-kpi-trend;
+
+      &.trend-down {
+        background: #fef2f2;
+        color: #dc2626;
+      }
     }
   }
 }

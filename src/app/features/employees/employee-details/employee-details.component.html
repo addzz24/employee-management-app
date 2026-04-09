@@ -67,6 +67,10 @@
 </ng-template>
 
 <ng-template #cardListView>
+  <ng-container [ngTemplateOutlet]="loading() ? loader : carList"></ng-container>
+</ng-template>
+
+<ng-template #carList>
   <div class="card-list">
     @for (emp of employees(); track emp.id) {
       <app-data-card
@@ -75,5 +79,11 @@
         (delete)="handleTableAction($event)"
       ></app-data-card>
     }
+  </div>
+</ng-template>
+
+<ng-template #loader>
+  <div class="loader-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
   </div>
 </ng-template>

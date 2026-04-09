@@ -32,6 +32,19 @@
         <span class="kpi-trend trend-up">+51.43%</span>
       </div>
     </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-header">
+        <mat-icon class="kpi-icon icon-green">trending_up</mat-icon>
+        <span class="kpi-label">Net Profit</span>
+      </div>
+      <div class="kpi-content">
+        <h2 class="kpi-value">₹{{ netProfit() | number }}</h2>
+        <span class="kpi-trend" [class]="isProfitPositive() ? 'trend-up' : 'trend-down'">
+          {{ isProfitPositive() ? '+' : '' }}{{ profitTrend() }}%
+        </span>
+      </div>
+    </mat-card>
   </section>
 
   <section class="analytics-row">
