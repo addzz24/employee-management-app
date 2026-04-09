@@ -1,59 +1,174 @@
-# EmployeeManagementApp
+# Employee Management App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.18.
+## Description
 
-## Development server
+Employee Management App is an Angular v21 administrative interface for managing employee records and company analytics. It includes reactive forms, editable employee details, summary dashboards, charts, and a API integrations with backend powered by `json-server`.
 
-To start a local development server, run:
+## What is covered
+
+- Angular 21 with Angular Material
+- Header component with logo, navigation, and dummy user info
+- Dashboard with D3 charts
+- Employee List page with:
+  - table view
+  - card view
+  - toggle between views
+  - search/filter support
+  - pagination
+  - edit/delete actions
+- Card flip for “View More” details
+- Add Employee page with reactive form
+- Reactive FormArray support for multiple addresses
+- Edit employee via modal popup
+- Delete confirmation dialog
+- Pending changes guard for unsaved form navigation
+- Loader display during fetch/process
+- API service layer with `employee.service.ts`
+- Mock backend using `json-server`
+- Reusable shared components and clean folder structure
+- Global state store with NgRx Signals
+- Project documentation in `README.md`
+
+## Tech Stack
+
+- Angular 21.x
+- Angular Material 21.x
+- NgRx Store & Signals 21.x
+- D3.js 7.x
+- TypeScript 5.9.x
+- json-server 0.17.x
+
+## Packages Used (Manually Installed)
+
+- `@angular/cdk` ^21.2.5
+- `@angular/material` ^21.2.5
+- `@ngrx/store` ^21.1.0
+- `@ngrx/signals` ^21.1.0
+- `d3` ^7.9.0
+- `json-server` ^0.17.4
+- `@types/d3` ^7.4.3
+
+## Installation UI
+
+1. Open a terminal in the project root.
+2. Install frontend dependencies:
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+3. Start the Angular development server:
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+4. Visit `http://localhost:4200/` in your browser.
+
+## Installation Backend
+
+1. Change to the backend folder:
 
 ```bash
-ng generate --help
+cd backend
 ```
 
-## Building
-
-To build the project run:
+2. Install backend dependencies:
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+3. Start the mock backend server:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+4. The mock API will run on the configured backend port.
 
-For end-to-end (e2e) testing, run:
+## Project Architecture
 
-```bash
-ng e2e
+```
+src
+│
+└── app
+    │
+    ├── core
+    │   ├── guards
+    │   ├── pipes
+    │   ├── services
+    │   └── types
+    │
+    ├── features
+    │   ├── dashboard
+    │   └── employees
+    │
+    ├── layout
+    │   ├── header
+    │   └── layout-component
+    │
+    ├── shared
+    │   ├── components
+    │   └── constants
+    │
+    ├── store
+    │   └── global
+    │
+    └── styles
+        └── base
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Folder Responsibilities
 
-## Additional Resources
+- `core/`: application-wide services, route guards, global state stores, pipes, and shared core types
+- `shared/`: reusable UI components, constants, and cross-feature presentation utilities
+- `features/`: feature-specific pages and workflows such as dashboard and employee management
+- `layout/`: shell components and top-level layout controls like header and app scaffolding
+- `store/`: centralized global state management and shared application stores
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## User Interface Preview
+
+![Dashboard Page](public/assets/image.png)
+
+![Dashboard Charts with labels](public/assets/image-1.png)
+
+![Employee Listing Table](public/assets/image-2.png)
+
+![Employee Listing Card View](public/assets/image-12.png)
+
+![Employee Listing Flip Card ](public/assets/image-13.png)
+
+![Employee Listing Search](public/assets/image-10.png)
+
+![Employee Listsing Filters](public/assets/image-11.png)
+
+![Edit Employee 1](public/assets/image-15.png)
+
+![Edit Employee 2](public/assets/image-16.png)
+
+![Delete Confirmation](public/assets/image-14.png)
+
+![Add Employee 1](public/assets/image-3.png)
+
+![Add Employee 2](public/assets/image-4.png)
+
+![Add Employee Validation 1](public/assets/image-5.png)
+
+![Add Employee Validation 2](public/assets/image-6.png)
+
+![Add Employee Validation 3](public/assets/image-7.png)
+
+![Unsaved Changes Confirmation](public/assets/image-8.png)
+
+![Add Employee Success](public/assets/image-9.png)
+
+
+## Future Improvements
+
+- Add authentication with login/logout flows
+- Implement RBAC (role-based access control)
+- Replace mock backend with a real API service
+- Extend state management
+- Add comprehensive unit and integration tests

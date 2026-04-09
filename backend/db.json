@@ -72,7 +72,7 @@
       "employmentType": "Full-time",
       "status": "Active",
       "salary": 4200000,
-      "bonus": 600000,
+      "bonus": 150000,
       "currency": "INR"
     },
     {
@@ -197,7 +197,7 @@
       "employmentType": "Contractor",
       "status": "Active",
       "salary": 3200000,
-      "bonus": 450000,
+      "bonus": 120000,
       "currency": "INR"
     },
     {
@@ -272,7 +272,7 @@
       "employmentType": "Full-time",
       "status": "Active",
       "salary": 5500000,
-      "bonus": 800000,
+      "bonus": 150000,
       "currency": "INR"
     },
     {
