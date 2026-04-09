@@ -348,9 +348,10 @@
                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
                   <input
                     matInput
-                    type="text"
+                    type="number"
                     formControlName="pincode"
                     placeholder="Enter Pincode"
+                    (keydown)="blockNonNumeric($event)"
                   />
                 </mat-form-field>
                 <ng-container

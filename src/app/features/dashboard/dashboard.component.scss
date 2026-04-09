@@ -29,12 +29,24 @@
     .chart-card {
       border-radius: $space-12;
       min-width: 320px;
+      position: relative;
 
       &.large {
         flex: 2;
       }
       &.small {
         flex: 1;
+      }
+
+      mat-card-content {
+        position: relative;
+      }
+
+      .chart-loader {
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
@@ -93,8 +105,9 @@
 }
 
 :host {
-  ::ng-deep .chart-card .mat-mdc-card-content {
-    margin-top: $rem-1 !important;
+  ::ng-deep .large .mat-mdc-card-content {
+    margin-top: 2rem !important;
     padding: $space-16 !important;
+    position: relative;
   }
 }

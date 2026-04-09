@@ -129,8 +129,7 @@ export class EmployeeFormComponent implements OnInit {
       ]),
       pincode: this.fb.control<number | null>(null, [
         Validators.required,
-        Validators.min(1000),
-        Validators.max(99999999),
+        Validators.minLength(6)
       ]),
       state: this.fb.nonNullable.control('', [
         Validators.required,

@@ -40,7 +40,14 @@
         <mat-card-title>Employees by Department</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-bar-chart [data]="barChartData()" (categoryClick)="onBarChartCategoryClick($event)"></app-bar-chart>
+        @if (!isLoading()) {
+          <app-bar-chart
+            [data]="barChartData()"
+            (categoryClick)="onBarChartCategoryClick($event)"
+          ></app-bar-chart>
+        } @else {
+          <ng-container *ngTemplateOutlet="chartLoader"></ng-container>
+        }
       </mat-card-content>
     </mat-card>
 
@@ -49,8 +56,23 @@
         <mat-card-title>Employment Type Distribution</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-pie-chart [data]="pieChartData()" (statusClick)="onPieChartStatusClick($event)"></app-pie-chart>
+        <mat-card-content>
+          @if (!isLoading()) {
+            <app-pie-chart
+              [data]="pieChartData()"
+              (statusClick)="onPieChartStatusClick($event)"
+            ></app-pie-chart>
+          } @else {
+            <ng-container *ngTemplateOutlet="chartLoader"></ng-container>
+          }
+        </mat-card-content>
       </mat-card-content>
     </mat-card>
   </section>
 </div>
+
+<ng-template #chartLoader>
+  <div class="chart-loader">
+    <mat-progress-spinner mode="indeterminate" diameter="50" color="primary"></mat-progress-spinner>
+  </div>
+</ng-template>

@@ -1,17 +1,19 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { GlobalStore } from '../../store/global/global.store';
 import { MatCardModule } from "@angular/material/card";
 import { MatIcon } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 import { PieChartComponent } from "../../shared/components/pie-chart/pie-chart.component";
 import { BarChartComponent } from "../../shared/components/bar-chart/bar-chart.component";
 import { BarChartData, PieChartData } from '../../core/types/types';
 import { finalize } from 'rxjs';
 import { EmployeeService } from '../../core/services/employee.service';
+import { CdkNoDataRow } from "@angular/cdk/table";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [MatCardModule, MatIcon, CommonModule, PieChartComponent, BarChartComponent],
+  imports: [MatCardModule, MatIcon, MatProgressSpinnerModule, CommonModule, PieChartComponent, BarChartComponent, CdkNoDataRow],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -19,15 +21,17 @@ import { EmployeeService } from '../../core/services/employee.service';
 export class DashboardComponent implements OnInit {
   readonly store = inject(GlobalStore);
   private employeeService = inject(EmployeeService);
+  readonly isLoading = signal(false);
 
   ngOnInit() {
     this.loadEmployees();
   }
 
   loadEmployees() {
+    this.isLoading.set(true);
     this.employeeService
-      .getEmployees(1, 1000) // Load all employees for dashboard
-      .pipe(finalize(() => {}))
+      .getEmployees(1, 1000)
+      .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
         next: (res) => {
           this.store.setEmployees(res.data);
