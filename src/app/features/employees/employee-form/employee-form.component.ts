@@ -32,7 +32,7 @@ import {
 } from '../../../shared/constants/constants';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTooltip } from "@angular/material/tooltip";
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-employee-form',
@@ -46,8 +46,8 @@ import { MatTooltip } from "@angular/material/tooltip";
     MatIconModule,
     MatSelectModule,
     MatButtonModule,
-    MatTooltip
-],
+    MatTooltip,
+  ],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss',
   standalone: true,
@@ -129,7 +129,6 @@ export class EmployeeFormComponent implements OnInit {
       ]),
       pincode: this.fb.control<number | null>(null, [
         Validators.required,
-        Validators.minLength(6)
       ]),
       state: this.fb.nonNullable.control('', [
         Validators.required,

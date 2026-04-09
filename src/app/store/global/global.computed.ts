@@ -2,7 +2,6 @@ import { computed } from '@angular/core';
 
 export const globalComputed = (state: any) => {
 
-  // 1. First, we define the filteredEmployees as it is a dependency for charts
   const filteredEmployees = computed(() => {
     let list = state.employees();
     const filters = state.filters();
